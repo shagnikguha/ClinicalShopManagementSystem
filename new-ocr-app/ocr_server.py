@@ -2,42 +2,48 @@ from flask import Flask, request, jsonify
 import easyocr
 import cv2
 import requests
+import pandas as pd
 
-app = Flask(__name__)  # Corrected __name__
+app = Flask(__name__)
 
-# Initialize EasyOCR reader
 reader = easyocr.Reader(['en'], gpu=False)
+
+df = pd.read_csv(r"\ocr\medicines.csv")
+medicine_list = df['Medicine Name'].tolist()
 
 @app.route('/ocr', methods=['POST'])
 def ocr():
     data = request.json
     image_path = data.get('imagePath')
-    
-    # Read the image
+
     img_presc = cv2.imread(image_path)
 
-    # Check if the image was loaded successfully
     if img_presc is None:
         return jsonify({"error": "Image could not be loaded"}), 400
 
-    # Perform OCR
     result = reader.readtext(img_presc)
 
-    # Extract and process text as a list
     detected_text = [i[1] for i in result]
 
-    # Example: Let's say these are the medicine names extracted
-    medicines_extracted = detected_text
-    
-    print(medicines_extracted)
-    # Send the extracted medicines to the Express backend (Node.js)
-    response = requests.post('http://localhost:3000/cart/add-from-ocr', json={
-        'medicines': medicines_extracted,  # Send the list of medicines
-        'userId': data.get('userId')  # Assuming the user ID is provided
-    })
+    caught_medicines = []
 
-    # Return the result from the Express backend
-    return jsonify(response.json())
+    for text in detected_text:
+        for m in medicine_list:
+            if m.lower() in text.lower(): 
+                caught_medicines.append(m) 
 
-if __name__ == '__main__':  # Corrected __name__ and __main__
+    if caught_medicines:
+        try:
+            response = requests.post('http://localhost:3000/cart/add-from-ocr', json={
+                'medicines': caught_medicines
+                # 'userId': data.get('userId')
+            })
+            return jsonify(response.json())
+        except requests.exceptions.RequestException as e:
+            return jsonify({"error": str(e)}), 500
+    else:
+        return jsonify({"error": "No medicines recognized from the prescription."}), 400
+
+
+if __name__ == '__main__':
     app.run(host='localhost', port=5000, debug=True)
