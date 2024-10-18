@@ -1,0 +1,1222 @@
+.search-page {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 67px;
+    position: relative;
+    background-color: #ffffff;
+  }
+  
+  .search-page .top-carousel {
+    display: flex;
+    flex-direction: column;
+    height: 658px;
+    align-items: center;
+    padding: 31px 0px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+  }
+  
+  .search-page .navbar {
+    position: relative;
+    align-self: stretch;
+    min-width: 900px;
+    width: 100%;
+    height: 44px;
+  }
+  
+  .search-page .navbar-clickables {
+    display: flex;
+    width: 562px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    gap: 119px;
+    padding: 0px 26px 0px 0px;
+    position: absolute;
+    top: 4px;
+    left: 689px;
+  }
+  
+  .search-page .div-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
+    flex: 1;
+    flex-grow: 1;
+  }
+  
+  .search-page .home {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    transition: all 0.2s ease;
+    font-family: "Barlow", Helvetica;
+    font-weight: 600;
+    color: #050505;
+    font-size: 22px;
+    text-align: center;
+    line-height: 15.6px;
+    white-space: nowrap;
+  }
+  
+  .search-page .text-wrapper {
+    letter-spacing: 0.39px;
+  }
+  
+  .search-page .span {
+    letter-spacing: 1.89px;
+  }
+  
+  .search-page .div {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    margin-left: -10.83px;
+    margin-right: -10.83px;
+    transition: all 0.2s ease;
+    font-family: "Barlow", Helvetica;
+    font-weight: 600;
+    color: #050505;
+    font-size: 22px;
+    text-align: center;
+    letter-spacing: 1.76px;
+    line-height: 15.6px;
+    white-space: nowrap;
+  }
+  
+  .search-page .logo {
+    display: flex;
+    width: 160px;
+    height: 44px;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 48px;
+  }
+  
+  .search-page .text-wrapper-2 {
+    position: relative;
+    flex: 1;
+    margin-top: -1px;
+    transition: all 0.2s ease;
+    font-family: "Barlow", Helvetica;
+    font-weight: 800;
+    color: #050505;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: 5.28px;
+    line-height: 24.5px;
+  }
+  
+  .search-page .background-img {
+    display: flex;
+    flex-direction: column;
+    width: 1280px;
+    height: 584px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    margin-bottom: -32px;
+  }
+  
+  .search-page .image {
+    position: relative;
+    width: 1280px;
+    height: 582px;
+  }
+  
+  .search-page .search-bar {
+    display: flex;
+    flex-direction: column;
+    width: 697px;
+    height: 65px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    padding: 23px 21px 23px 20px;
+    position: absolute;
+    top: 432px;
+    left: 309px;
+    background-color: #ffffff;
+    border-radius: 13px;
+    box-shadow: 0px 5px 16.9px #00000036;
+  }
+  
+  .search-page .p {
+    border: none;
+    outline: none;
+    position: relative;
+    align-self: stretch;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #737987bd;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .search-page .search-btn {
+    all: unset;
+    box-sizing: border-box;
+    display: flex;
+    width: 158px;
+    height: 65px;
+    align-items: center;
+    justify-content: center;
+    gap: 17px;
+    padding: 19px 28px;
+    position: absolute;
+    top: 0;
+    left: 539px;
+    background-color: #019c7c;
+    border-radius: 0px 13px 13px 0px;
+    cursor: pointer;
+  }
+  
+  .search-page .vector {
+    position: relative;
+    width: 16px;
+    height: 15px;
+  }
+  
+  .search-page .text-wrapper-3 {
+    position: relative;
+    width: fit-content;
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 19px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .search-page .text {
+    display: flex;
+    flex-direction: column;
+    width: 672px;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    position: absolute;
+    top: 292px;
+    left: 329px;
+  }
+  
+  .search-page .div-wrapper-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+  }
+  
+  .search-page .text-wrapper-4 {
+    position: relative;
+    width: 662px;
+    margin-top: -1px;
+    margin-left: -5px;
+    margin-right: -5px;
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 40px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .search-page .med-text {
+    display: flex;
+    width: 587px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .search-page .text-wrapper-5 {
+    position: relative;
+    flex: 1;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 19px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .search-page .element-line {
+    display: flex;
+    max-height: 689px;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+  }
+  
+  .search-page .category-window {
+    display: flex;
+    flex-direction: column;
+    width: 272px;
+    height: 683px;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 60px 14px 60px 25px;
+    position: relative;
+    background-color: #ffffff;
+  }
+  
+  .search-page .vitamin-tablets {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    position: relative;
+    flex: 1;
+    align-self: stretch;
+    width: 100%;
+    flex-grow: 1;
+  }
+  
+  .search-page .vitamins-icon {
+    position: relative;
+    width: 35.32px;
+    height: 37.45px;
+  }
+  
+  .search-page .text-wrapper-6 {
+    position: relative;
+    width: fit-content;
+    font-family: "Roboto", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 13px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .search-page .painkiller-tablets {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    position: relative;
+    flex: 1;
+    align-self: stretch;
+    width: 100%;
+    flex-grow: 1;
+  }
+  
+  .search-page .painkiller-icon {
+    position: relative;
+    width: 37.59px;
+    height: 37.59px;
+  }
+  
+  .search-page .antidepressant {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    position: relative;
+    flex: 1;
+    align-self: stretch;
+    width: 100%;
+    flex-grow: 1;
+  }
+  
+  .search-page .antidepressant-icon {
+    position: relative;
+    width: 30px;
+    height: 34px;
+  }
+  
+  .search-page .div-2 {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    flex: 1;
+    align-self: stretch;
+    width: 100%;
+    flex-grow: 1;
+  }
+  
+  .search-page .antibiotic-icon {
+    position: relative;
+    width: 43.34px;
+    height: 51px;
+  }
+  
+  .search-page .antihestamine-icon {
+    position: relative;
+    width: 52px;
+    height: 52px;
+    object-fit: cover;
+  }
+  
+  .search-page .search-res {
+    display: flex;
+    flex-wrap:wrap;
+    width: 1008px;
+    max-height: 689px;
+    align-items: flex-start;
+    gap: 31px 31px;
+    padding: 55px 16px 55px 22px;
+    position: relative;
+    background-color: #f3f4f6;
+    overflow-y: scroll;
+  }
+  
+  .search-page .card {
+    display: flex;
+    flex-direction: column;
+    width: 208px;
+    height: 352px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 12px;
+    padding: 5px 0px 5px 10px;
+    position: relative;
+    background-color: #ffffff;
+  }
+  
+  .search-page .card-img-container {
+    display: flex;
+    width: 187px;
+    height: 167px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 32px 40px;
+    position: relative;
+    background-color: #f3f5f6;
+  }
+  
+  .search-page .med-img {
+    position: relative;
+    width: 106px;
+    height: 94px;
+    object-fit: cover;
+  }
+  
+  .search-page .card-name {
+    display: inline-flex;
+    justify-content: center;
+    gap: 10px;
+    flex: 0 0 auto;
+    align-items: center;
+    position: relative;
+  }
+  
+  .search-page .text-wrapper-7 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Roboto", Helvetica;
+    font-weight: 500;
+    color: #6b7280;
+    font-size: 13px;
+    letter-spacing: 0.26px;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .search-page .div-3 {
+    display: flex;
+    width: 187px;
+    justify-content: space-between;
+    flex: 0 0 auto;
+    align-items: center;
+    position: relative;
+  }
+  
+  .search-page .card-price {
+    display: flex;
+    width: 72px;
+    height: 47px;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    position: relative;
+  }
+  
+  .search-page .text-wrapper-8 {
+    position: relative;
+    flex: 1;
+    margin-top: -18.5px;
+    margin-bottom: -16.5px;
+    font-family: "Inter", Helvetica;
+    font-weight: 800;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0.32px;
+    line-height: 82px;
+  }
+  
+  .search-page .add-to-cart-image {
+    cursor: pointer;
+    position: relative;
+    width: 27px;
+    height: 26px;
+  }
+  .addToCartForm {
+    display: none;
+  }
+  
+  .search-page .quantity {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .search-page .rectangle {
+    position: relative;
+    width: 69px;
+    height: 24px;
+    background-color: #d9d9d9;
+  }
+  
+  .search-page .add-to-cart {
+    cursor: pointer;
+    display: flex;
+    width: 76px;
+    height: 22px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0px 2px;
+    position: relative;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 11px;
+  }
+  
+  .search-page .text-wrapper-9 {
+    position: relative;
+    width: fit-content;
+    margin-top: -31px;
+    margin-bottom: -29px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #191c3f;
+    font-size: 10px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    line-height: 82px;
+    white-space: nowrap;
+  }
+  
+  .search-page .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 45px;
+    padding: 0px 30px 0px 29px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+    background-color: transparent;
+  }
+  
+  .search-page .img {
+    align-self: stretch;
+    width: 100%;
+    position: relative;
+    height: 1px;
+  }
+  
+  .search-page .footer-first-row {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+  }
+  
+  .search-page .site-info {
+    flex-direction: column;
+    width: 483px;
+    align-items: flex-start;
+    gap: 8px;
+    display: flex;
+    position: relative;
+  }
+  
+  .search-page .footer-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .search-page .text-wrapper-10 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 44px;
+    letter-spacing: 3.08px;
+    line-height: 82px;
+    white-space: nowrap;
+  }
+  
+  .search-page .text-wrapper-11 {
+    position: relative;
+    width: 463px;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #838383;
+    font-size: 18px;
+    letter-spacing: 1.26px;
+    line-height: 35px;
+  }
+  
+  .search-page .contact-us {
+    display: flex;
+    flex-direction: column;
+    width: 282.45px;
+    align-items: flex-start;
+    gap: 27px;
+    position: relative;
+  }
+  
+  .search-page .text-wrapper-12 {
+    position: relative;
+    align-self: stretch;
+    margin-top: -1px;
+    transition: all 0.2s ease;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 1.68px;
+    line-height: 35px;
+  }
+  
+  .search-page .address {
+    position: relative;
+    align-self: stretch;
+    height: 36px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #302f2f;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .search-page .phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 22px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .search-page .phone-svg {
+    position: relative;
+    width: 25.41px;
+    height: 26.61px;
+  }
+  
+  .search-page .text-wrapper-13 {
+    position: relative;
+    width: 138.91px;
+    height: 37.19px;
+    margin-top: -1px;
+    transition: all 0.2s ease;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #302f2f;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 35px;
+    white-space: nowrap;
+  }
+  
+  .search-page .mail {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .search-page .mail-svg {
+    position: relative;
+    width: 29.41px;
+    height: 22.3px;
+  }
+  
+  .search-page .text-wrapper-14 {
+    position: relative;
+    width: 154.12px;
+    height: 37.19px;
+    margin-top: -1px;
+    transition: all 0.2s ease;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #302f2f;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 35px;
+    white-space: nowrap;
+  }
+  
+  .search-page .quick-links {
+    display: flex;
+    flex-direction: column;
+    width: 171px;
+    align-items: flex-start;
+    gap: 12px;
+    position: relative;
+  }
+  
+  .search-page .text-wrapper-15 {
+    position: relative;
+    align-self: stretch;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: 35px;
+  }
+  
+  .search-page .text-wrapper-16 {
+    position: relative;
+    align-self: stretch;
+    height: 37.19px;
+    transition: all 0.2s ease;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #302f2f;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 35px;
+    white-space: nowrap;
+  }
+  
+  .search-page .text-wrapper-17 {
+    position: relative;
+    align-self: stretch;
+    height: 37px;
+    transition: all 0.2s ease;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #302f2f;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 35px;
+    white-space: nowrap;
+  }
+  
+  .search-page .follow-us {
+    display: flex;
+    flex-direction: column;
+    width: 127.66px;
+    align-items: flex-start;
+    gap: 21px;
+    position: relative;
+  }
+  
+  .search-page .instagram {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+  }
+  
+  .search-page .IG-icon {
+    position: relative;
+    width: 20.05px;
+    height: 20px;
+  }
+  
+  .search-page .text-wrapper-18 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 13px;
+    letter-spacing: 0;
+    line-height: 35px;
+    white-space: nowrap;
+  }
+  
+  .search-page .x {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .search-page .x-bg {
+    position: relative;
+    width: 21.61px;
+    height: 21.56px;
+  }
+  
+  .search-page .x-icon {
+    position: absolute;
+    width: 17px;
+    height: 15px;
+    top: 10px;
+    left: 2px;
+  }
+  
+  .search-page .description {
+    display: flex;
+    flex-direction: column;
+    width: 538px;
+    align-items: flex-start;
+    gap: 5px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .search-page .the-information {
+    position: relative;
+    align-self: stretch;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 22px;
+  }
+  
+  .search-page .copyright {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+  }
+  
+  .search-page .footer-underline {
+    position: relative;
+    width: 1201.5px;
+    height: 1px;
+    object-fit: cover;
+  }
+  
+  .search-page .copyright-text {
+    position: relative;
+    align-self: stretch;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 13px;
+    letter-spacing: 0;
+    line-height: 35px;
+  }
+  
+  .search-page .cart-btn {
+    width: 104px;
+    height: 98px;
+    justify-content: center;
+    gap: 16px;
+    padding: 15px 6px;
+    position: fixed;
+    top: 350px;
+    left: 1176px;
+    background-color: #009c7d;
+    border-radius: 6px 0px 0px 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .search-page .shopping-items {
+    display: flex;
+    width: 87px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0px 8px 0px 4px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .search-page .shopping-bag {
+    position: relative;
+    width: 18px;
+    height: 22px;
+  }
+  
+  .search-page .num-item-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 3px 0px 0px;
+    position: relative;
+    flex: 1;
+    flex-grow: 1;
+  }
+  
+  .search-page .text-wrapper-19 {
+    flex: 1;
+    margin-top: -1px;
+    font-weight: 500;
+    color: #ffffff;
+    position: relative;
+    font-family: "Inter", Helvetica;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .search-page .cost-btn {
+    display: inline-flex;
+    height: 26px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 3px 9px;
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 6px;
+  }
+  
+  .search-page .text-wrapper-20 {
+    position: relative;
+    width: fit-content;
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #019d7d;
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .search-page .cart-slider {
+    width: 498px;
+    height: 832px;
+    padding: 0px 0px 41px;
+    position: fixed;
+    top: 0;
+    left: 782px;
+    transform:translateX(1000px);
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .search-page .cart-header {
+    height: 78px;
+    justify-content: flex-end;
+    gap: 23px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .search-page .cart-header-icons {
+    display: flex;
+    width: 452px;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .search-page .cart-header-count {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 23px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .search-page .shopping-bag-2 {
+    position: relative;
+    width: 26px;
+    height: 32px;
+  }
+  
+  .search-page .text-wrapper-21 {
+    width: fit-content;
+    font-weight: 600;
+    color: #019d7d;
+    white-space: nowrap;
+    position: relative;
+    font-family: "Inter", Helvetica;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .search-page .cross {
+    position: relative;
+    width: 29px;
+    height: 32px;
+  }
+  
+  .search-page .vector-2 {
+    width: 498px;
+    margin-bottom: -0.5px;
+    object-fit: cover;
+    position: relative;
+    height: 1px;
+  }
+  
+  .search-page .checkout-slider {
+    display: flex;
+    width: 437px;
+    height: 59px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 6px 4px 28px;
+    position: absolute;
+    top: 742px;
+    left: 28px;
+    background-color: #019d7d;
+    border-radius: 29.5px;
+  }
+  
+  .search-page .text-wrapper-22 {
+    position: relative;
+    width: fit-content;
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .search-page .checkout-btn {
+    display: inline-flex;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 11px;
+    position: relative;
+    flex: 0 0 auto;
+    background-color: #ffffff;
+    border-radius: 25px;
+  }
+  
+  .search-page .text-wrapper-23 {
+    position: relative;
+    width: fit-content;
+    margin-top: -0.5px;
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    color: #019d7d;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .search-page .empty-card-display {
+    display: flex;
+    flex-direction: column;
+    width: 146px;
+    height: 209px;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    position: absolute;
+    top: 311px;
+    left: 174px;
+  }
+  
+  .search-page .no-item-img {
+    position: relative;
+    width: 135px;
+    height: 165px;
+    object-fit: cover;
+  }
+  
+  .search-page .text-wrapper-24 {
+    position: relative;
+    align-self: stretch;
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .search-page .checkout-card {
+    display: flex;
+    width: 498px;
+    height: 134px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    padding: 18px 19px 8px;
+    position: relative;
+    background-color: #ffffff;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: #ecedf0;
+  }
+  
+  .search-page .med-card-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .search-page .cart-quantity {
+    width: 42px;
+    height: 50px;
+    justify-content: center;
+    padding: 0px 14px 10px;
+    position: relative;
+    background-color: #f3f4f6;
+    border-radius: 19px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .search-page .text-wrapper-25 {
+    position: relative;
+    width: 8px;
+    margin-top: -22px;
+    margin-bottom: -20px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 16px;
+    letter-spacing: 0.32px;
+    line-height: 82px;
+  }
+  
+  .search-page .medicine-img {
+    display: flex;
+    flex-direction: column;
+    width: 90px;
+    height: 90px;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 20px 17px;
+    position: relative;
+    background-color: #f3f5f6;
+  }
+  
+  .search-page .med-img-2 {
+    position: relative;
+    width: 55px;
+    height: 48.79px;
+    object-fit: cover;
+  }
+  
+  .search-page .base-med-info {
+    display: flex;
+    flex-direction: column;
+    width: 122px;
+    height: 58px;
+    align-items: flex-start;
+    gap: 8px;
+    position: relative;
+  }
+  
+  .search-page .text-wrapper-26 {
+    position: relative;
+    align-self: stretch;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    color: #1f2937;
+    font-size: 16px;
+    letter-spacing: 0.32px;
+    line-height: normal;
+  }
+  
+  .search-page .base-price-txt {
+    position: relative;
+    flex: 1;
+    align-self: stretch;
+    font-family: "Inter", Helvetica;
+    font-weight: 800;
+    color: #009f7f;
+    font-size: 16px;
+    letter-spacing: 0.32px;
+    line-height: 82px;
+    white-space: nowrap;
+  }
+  
+  .search-page .med-total-price-txt {
+    position: relative;
+    width: 72px;
+    height: 31px;
+    font-family: "Inter", Helvetica;
+    font-weight: 800;
+    color: #1f2937;
+    font-size: 16px;
+    letter-spacing: 0.32px;
+    line-height: 82px;
+    white-space: nowrap;
+  }
+  
+  .search-page .remove-item {
+    position: relative;
+    width: 9px;
+    height: 9px;
+  }
+  
