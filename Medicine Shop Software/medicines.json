@@ -1,0 +1,451 @@
+{
+    "medicines": [
+      {
+        "name": "aspirin",
+        "stockQuantity": 100,
+        "manufactureDate": "2021-08-07",
+        "expiryDate": "2022-08-07",
+        "category": "Vitamin"
+      },
+      {
+        "name": "ibuprofen",
+        "stockQuantity": 150,
+        "manufactureDate": "2017-10-12",
+        "expiryDate": "2019-10-12",
+        "category": "Vitamin"
+      },
+      {
+        "name": "acetaminophen",
+        "stockQuantity": 200,
+        "manufactureDate": "2020-04-28",
+        "expiryDate": "2022-04-28",
+        "category": "Painkiller"
+      },
+      {
+        "name": "amoxicillin",
+        "stockQuantity": 80,
+        "manufactureDate": "2020-11-02",
+        "expiryDate": "2021-11-02",
+        "category": "Vitamin"
+      },
+      {
+        "name": "lisinopril",
+        "stockQuantity": 120,
+        "manufactureDate": "2020-10-09",
+        "expiryDate": "2021-10-09",
+        "category": "Vitamin"
+      },
+      {
+        "name": "metformin",
+        "stockQuantity": 150,
+        "manufactureDate": "2020-11-27",
+        "expiryDate": "2023-11-27",
+        "category": "Antidepressant"
+      },
+      {
+        "name": "levothyroxine",
+        "stockQuantity": 180,
+        "manufactureDate": "2022-09-30",
+        "expiryDate": "2023-09-30",
+        "category": "Vitamin"
+      },
+      {
+        "name": "amlodipine",
+        "stockQuantity": 130,
+        "manufactureDate": "2022-10-20",
+        "expiryDate": "2023-10-20",
+        "category": "Vitamin"
+      },
+      {
+        "name": "albuterol",
+        "stockQuantity": 90,
+        "manufactureDate": "2022-01-15",
+        "expiryDate": "2026-01-14",
+        "category": "Antibiotic"
+      },
+      {
+        "name": "omeprazole",
+        "stockQuantity": 200,
+        "manufactureDate": "2019-11-30",
+        "expiryDate": "2023-11-29",
+        "category": "Antidepressant"
+      },
+      {
+        "name": "metoprolol",
+        "stockQuantity": 110,
+        "manufactureDate": "2023-10-20",
+        "expiryDate": "2026-10-19",
+        "category": "Painkiller"
+      },
+      {
+        "name": "sertraline",
+        "stockQuantity": 140,
+        "manufactureDate": "2016-09-28",
+        "expiryDate": "2020-09-27",
+        "category": "Painkiller"
+      },
+      {
+        "name": "gabapentin",
+        "stockQuantity": 160,
+        "manufactureDate": "2021-12-10",
+        "expiryDate": "2024-12-09",
+        "category": "Painkiller"
+      },
+      {
+        "name": "losartan",
+        "stockQuantity": 125,
+        "manufactureDate": "2023-06-19",
+        "expiryDate": "2024-06-18",
+        "category": "Antihistamine"
+      },
+      {
+        "name": "atorvastatin",
+        "stockQuantity": 150,
+        "manufactureDate": "2019-11-26",
+        "expiryDate": "2020-11-25",
+        "category": "Antihistamine"
+      },
+      {
+        "name": "escitalopram",
+        "stockQuantity": 130,
+        "manufactureDate": "2015-11-07",
+        "expiryDate": "2016-11-06",
+        "category": "Antibiotic"
+      },
+      {
+        "name": "fluoxetine",
+        "stockQuantity": 140,
+        "manufactureDate": "2017-11-04",
+        "expiryDate": "2021-11-03",
+        "category": "Painkiller"
+      },
+      {
+        "name": "pantoprazole",
+        "stockQuantity": 170,
+        "manufactureDate": "2018-08-03",
+        "expiryDate": "2022-08-02",
+        "category": "Antihistamine"
+      },
+      {
+        "name": "hydrocodone",
+        "stockQuantity": 50,
+        "manufactureDate": "2019-06-20",
+        "expiryDate": "2020-06-19",
+        "category": "Antibiotic"
+      },
+      {
+        "name": "clopidogrel",
+        "stockQuantity": 100,
+        "manufactureDate": "2015-02-13",
+        "expiryDate": "2017-02-12",
+        "category": "Antihistamine"
+      },
+      {
+        "name": "doxycycline",
+        "stockQuantity": 90,
+        "manufactureDate": "2021-05-28",
+        "expiryDate": "2022-05-28",
+        "category": "Vitamin"
+      },
+      {
+        "name": "furosemide",
+        "stockQuantity": 80,
+        "manufactureDate": "2016-05-26",
+        "expiryDate": "2017-05-26",
+        "category": "Antidepressant"
+      },
+      {
+        "name": "hydrochlorothiazide",
+        "stockQuantity": 110,
+        "manufactureDate": "2019-05-25",
+        "expiryDate": "2021-05-24",
+        "category": "Vitamin"
+      },
+      {
+        "name": "azithromycin",
+        "stockQuantity": 85,
+        "manufactureDate": "2020-05-18",
+        "expiryDate": "2021-05-18",
+        "category": "Painkiller"
+      },
+      {
+        "name": "prednisone",
+        "stockQuantity": 95,
+        "manufactureDate": "2023-11-01",
+        "expiryDate": "2026-10-31",
+        "category": "Vitamin"
+      },
+      {
+        "name": "citalopram",
+        "stockQuantity": 130,
+        "manufactureDate": "2017-01-28",
+        "expiryDate": "2018-01-28",
+        "category": "Vitamin"
+      },
+      {
+        "name": "clonazepam",
+        "stockQuantity": 100,
+        "manufactureDate": "2015-02-16",
+        "expiryDate": "2017-02-15",
+        "category": "Antihistamine"
+      },
+      {
+        "name": "tramadol",
+        "stockQuantity": 60,
+        "manufactureDate": "2017-03-26",
+        "expiryDate": "2020-03-25",
+        "category": "Antihistamine"
+      },
+      {
+        "name": "allopurinol",
+        "stockQuantity": 90,
+        "manufactureDate": "2023-04-05",
+        "expiryDate": "2024-04-04",
+        "category": "Antidepressant"
+      },
+      {
+        "name": "alprazolam",
+        "stockQuantity": 70,
+        "manufactureDate": "2016-08-06",
+        "expiryDate": "2017-08-06",
+        "category": "Painkiller"
+      },
+      {
+        "name": "warfarin",
+        "stockQuantity": 85,
+        "manufactureDate": "2017-04-01",
+        "expiryDate": "2021-03-31",
+        "category": "Painkiller"
+      },
+      {
+        "name": "rosuvastatin",
+        "stockQuantity": 140,
+        "manufactureDate": "2016-07-15",
+        "expiryDate": "2017-07-15",
+        "category": "Painkiller"
+      },
+      {
+        "name": "duloxetine",
+        "stockQuantity": 120,
+        "manufactureDate": "2020-07-18",
+        "expiryDate": "2025-07-17",
+        "category": "Antidepressant"
+      },
+      {
+        "name": "topiramate",
+        "stockQuantity": 110,
+        "manufactureDate": "2022-01-30",
+        "expiryDate": "2023-01-30",
+        "category": "Antidepressant"
+      },
+      {
+        "name": "spironolactone",
+        "stockQuantity": 75,
+        "manufactureDate": "2015-03-06",
+        "expiryDate": "2016-03-05",
+        "category": "Antihistamine"
+      },
+      {
+        "name": "venlafaxine",
+        "stockQuantity": 115,
+        "manufactureDate": "2021-01-24",
+        "expiryDate": "2024-01-24",
+        "category": "Painkiller"
+      },
+      {
+        "name": "celecoxib",
+        "stockQuantity": 80,
+        "manufactureDate": "2019-05-08",
+        "expiryDate": "2021-05-07",
+        "category": "Antibiotic"
+      },
+      {
+        "name": "tamsulosin",
+        "stockQuantity": 100,
+        "manufactureDate": "2021-08-24",
+        "expiryDate": "2026-08-23",
+        "category": "Painkiller"
+      },
+      {
+        "name": "zofran",
+        "stockQuantity": 70,
+        "manufactureDate": "2018-10-27",
+        "expiryDate": "2020-10-26",
+        "category": "Antidepressant"
+      },
+      {
+        "name": "bupropion",
+        "stockQuantity": 95,
+        "manufactureDate": "2015-03-31",
+        "expiryDate": "2018-03-30",
+        "category": "Vitamin"
+      },
+      {
+        "name": "pravastatin",
+        "stockQuantity": 90,
+        "manufactureDate": "2016-02-03",
+        "expiryDate": "2017-02-02",
+        "category": "Painkiller"
+      },
+      {
+        "name": "clonidine",
+        "stockQuantity": 60,
+        "manufactureDate": "2020-05-07",
+        "expiryDate": "2022-05-07",
+        "category": "Antibiotic"
+      },
+      {
+        "name": "insulin glargine",
+        "stockQuantity": 50,
+        "manufactureDate": "2019-02-14",
+        "expiryDate": "2021-02-13",
+        "category": "Antihistamine"
+      },
+      {
+        "name": "morphine",
+        "stockQuantity": 40,
+        "manufactureDate": "2022-03-12",
+        "expiryDate": "2026-03-11",
+        "category": "Painkiller"
+      },
+      {
+        "name": "lamotrigine",
+        "stockQuantity": 75,
+        "manufactureDate": "2018-10-24",
+        "expiryDate": "2022-10-23",
+        "category": "Antidepressant"
+      },
+      {
+        "name": "zolpidem",
+        "stockQuantity": 85,
+        "manufactureDate": "2021-05-30",
+        "expiryDate": "2023-05-30",
+        "category": "Antihistamine"
+      },
+      {
+        "name": "quetiapine",
+        "stockQuantity": 95,
+        "manufactureDate": "2017-06-28",
+        "expiryDate": "2018-06-28",
+        "category": "Antihistamine"
+      },
+      {
+        "name": "valsartan",
+        "stockQuantity": 105,
+        "manufactureDate": "2018-08-26",
+        "expiryDate": "2021-08-25",
+        "category": "Antibiotic"
+      },
+      {
+        "name": "ketorolac",
+        "stockQuantity": 70,
+        "manufactureDate": "2015-09-09",
+        "expiryDate": "2016-09-08",
+        "category": "Antibiotic"
+      },
+      {
+        "name": "bisoprolol",
+        "stockQuantity": 80,
+        "manufactureDate": "2015-06-03",
+        "expiryDate": "2016-06-02",
+        "category": "Painkiller"
+      },
+      {
+        "name": "esomeprazole",
+        "stockQuantity": 90,
+        "manufactureDate": "2022-01-20",
+        "expiryDate": "2026-01-19",
+        "category": "Painkiller"
+      },
+      {
+        "name": "loratadine",
+        "stockQuantity": 120,
+        "manufactureDate": "2022-03-01",
+        "expiryDate": "2026-02-28",
+        "category": "Painkiller"
+      },
+      {
+        "name": "montelukast",
+        "stockQuantity": 110,
+        "manufactureDate": "2015-10-19",
+        "expiryDate": "2019-10-18",
+        "category": "Painkiller"
+      },
+      {
+        "name": "oxycodone",
+        "stockQuantity": 45,
+        "manufactureDate": "2016-10-14",
+        "expiryDate": "2018-10-14",
+        "category": "Painkiller"
+      },
+      {
+        "name": "pioglitazone",
+        "stockQuantity": 100,
+        "manufactureDate": "2017-03-20",
+        "expiryDate": "2019-03-20",
+        "category": "Vitamin"
+      },
+      {
+        "name": "ranitidine",
+        "stockQuantity": 85,
+        "manufactureDate": "2023-09-02",
+        "expiryDate": "2027-09-01",
+        "category": "Antihistamine"
+      },
+      {
+        "name": "sitagliptin",
+        "stockQuantity": 75,
+        "manufactureDate": "2018-12-27",
+        "expiryDate": "2021-12-26",
+        "category": "Antibiotic"
+      },{
+        "name": "atenolol",
+        "stockQuantity": 110,
+        "manufactureDate": "2023-06-22",
+        "expiryDate": "2028-06-20",
+        "category": "Antibiotic"
+      },
+      {
+        "name": "fentanyl",
+        "stockQuantity": 30,
+        "manufactureDate": "2022-11-12",
+        "expiryDate": "2027-11-11",
+        "category": "Painkiller"
+      },
+      {
+        "name": "methotrexate",
+        "stockQuantity": 50,
+        "manufactureDate": "2015-12-20",
+        "expiryDate": "2016-12-19",
+        "category": "Antidepressant"
+      },
+      {
+        "name": "aripiprazole",
+        "stockQuantity": 70,
+        "manufactureDate": "2017-09-08",
+        "expiryDate": "2020-09-07",
+        "category": "Painkiller"
+      },
+      {
+        "name": "rifampin",
+        "stockQuantity": 65,
+        "manufactureDate": "2015-08-18",
+        "expiryDate": "2017-08-17",
+        "category": "Vitamin"
+      },
+      {
+        "name": "lithium",
+        "stockQuantity": 60,
+        "manufactureDate": "2018-03-16",
+        "expiryDate": "2019-03-16",
+        "category": "Antihistamine"
+      },
+      {
+        "name": "rivastigmine",
+        "stockQuantity": 55,
+        "manufactureDate": "2017-09-03",
+        "expiryDate": "2018-09-03",
+        "category": "Antibiotic"
+      }
+    ]
+  }
