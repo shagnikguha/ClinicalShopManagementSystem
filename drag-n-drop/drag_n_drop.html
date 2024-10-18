@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCR Image Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        .drop-zone {
+            border: 2px dashed #ccc;
+            padding: 50px;
+            text-align: center;
+            cursor: pointer;
+            margin: 20px;
+        }
+        .drop-zone.hover {
+            background-color: #f0f0f0;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload and Extract Text from Image</h1>
+    <div class="drop-zone" id="drop-zone">
+        Drag and drop a PNG image here or click to upload
+    </div>
+    <input type="file" id="file-input" accept="image/png" style="display: none;">
+    <div id="result" class="result"></div>
+
+    <script>
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const resultDiv = document.getElementById('result');
+
+        dropZone.addEventListener('click', () => fileInput.click());
+        dropZone.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            dropZone.classList.add('hover');
+        });
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('hover'));
+        dropZone.addEventListener('drop', (event) => {
+            event.preventDefault();
+            dropZone.classList.remove('hover');
+            const file = event.dataTransfer.files[0];
+            if (file) handleFileUpload(file);
+        });
+        fileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) handleFileUpload(file);
+        });
+
+        function handleFileUpload(file) {
+            const formData = new FormData();
+            formData.append('image', file);
+
+            fetch('/upload', { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => resultDiv.textContent = "Extracted Text: " + data.text)
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
