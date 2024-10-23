@@ -1,2 +1,3 @@
 # ClinicalShopManagementSystem
-SE Lab Project
+Admin Page
+
