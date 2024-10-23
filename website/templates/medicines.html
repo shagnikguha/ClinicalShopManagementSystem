@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}{{ category }} Inventory{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50 py-16">
+    <div class="container mx-auto px-6">
+        <!-- Header Section -->
+        <div class="mb-12 text-center">
+            <h1 class="text-4xl font-bold text-gray-900 mb-3">{{ category }} Inventory</h1>
+            <p class="text-gray-600 text-lg">Manage and track your {{ category.lower() }} supplies</p>
+        </div>
+
+        <!-- Medicine Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-h-[calc(100vh-200px)] overflow-y-auto p-2">
+            {% for medicine in medicines %}
+            <div class="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 p-4 mb-4">
+                <!-- Card Header -->
+                <div class="p-6 border-b border-gray-100">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3 text-center">{{ medicine.name | title }}</h3>
+                    <span class="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium 
+                        {% if medicine.stockQuantity > 50 %}
+                            bg-green-100 text-green-800
+                        {% elif medicine.stockQuantity > 20 %}
+                            bg-yellow-100 text-yellow-800
+                        {% else %}
+                            bg-red-100 text-red-800
+                        {% endif %}
+                    ">
+                        {{ medicine.stockQuantity }} in stock
+                    </span>
+                </div>
+
+                <!-- Card Body -->
+                <div class="p-6 space-y-4">
+                    <div class="text-gray-600">
+                        <span class="font-semibold text-gray-700">Category:</span>
+                        <span class="ml-2">{{ medicine.category }}</span>
+                    </div>
+
+                    <div class="text-gray-600">
+                        <span class="font-semibold text-gray-700">Manufactured:</span>
+                        <span class="ml-2">{{ medicine.manufactureDate }}</span>
+                    </div>
+
+                    <div class="text-gray-600">
+                        <span class="font-semibold text-gray-700">Expires:</span>
+                        <span class="ml-2">{{ medicine.expiryDate }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

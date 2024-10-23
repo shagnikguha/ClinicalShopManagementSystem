@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Medicine Inventory{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50 py-16">
+    <div class="container mx-auto px-6">
+        <!-- Header Section -->
+        <div class="mb-12 text-center">
+            <h1 class="text-4xl font-bold text-gray-900 mb-3">Medicine Inventory</h1>
+            <p class="text-gray-600 text-lg">Manage and track your medical supplies</p>
+        </div>
+
+        <!-- Buttons for Each Medicine Type -->
+        <div class="flex justify-center mb-8">
+            <a href="{{ url_for('views.medicines_by_category', category='Antibiotic') }}" class="bg-blue-500 text-white px-4 py-2 rounded mx-2">Antibiotics</a>
+            <a href="{{ url_for('views.medicines_by_category', category='Antidepressant') }}" class="bg-blue-500 text-white px-4 py-2 rounded mx-2">Antidepressants</a>
+            <a href="{{ url_for('views.medicines_by_category', category='Antihistamine') }}" class="bg-blue-500 text-white px-4 py-2 rounded mx-2">Antihistamines</a>
+            <a href="{{ url_for('views.medicines_by_category', category='Vitamin') }}" class="bg-blue-500 text-white px-4 py-2 rounded mx-2">Vitamins</a>
+            <a href="{{ url_for('views.medicines_by_category', category='Painkiller') }}" class="bg-blue-500 text-white px-4 py-2 rounded mx-2">Painkillers</a>
+        </div>  
+</div>
+{% endblock %}
