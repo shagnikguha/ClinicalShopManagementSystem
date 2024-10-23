@@ -10,8 +10,8 @@
             padding: 0;
             font-family: 'Roboto', sans-serif;
             height: 100%;
-            background-color: #121212;
-            color: #ffffff;
+            background-color: #2095c2;
+            color: #31b6d1;
         }
 
         .app-container {
@@ -20,7 +20,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            background-color: #1e1e1e;
+            background-color: white;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             overflow: hidden;
@@ -28,14 +28,14 @@
 
 /* Adjust the chat-header to allow the bot avatar next to the text */
 .chat-header {
-    background-color: #1e1e1e;
-    color: #ffffff;
+    background-color: #white;
+    color: #31b6d1;
     padding: 20px;
     display: flex;
     align-items: center; /* Aligns content vertically */
     font-size: 1.2rem;
     font-weight: bold;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #e0e0e0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -46,6 +46,7 @@
             display: flex;
             flex-direction: column;
             animation: fadeIn 0.5s ease-in-out;
+             background-color: white;
         }
 
         .message {
@@ -60,38 +61,46 @@
 
         .bot-message {
             align-self: flex-start;
-            background-color: #2c2c2c;
-            color: #ffffff;
+            background-color: #f0f0f0;
+            color: #31b6d1;
         }
 
         .user-message {
             align-self: flex-end;
-            background-color: #0084ff;
+            background-color: #109ed6;
             color: white;
         }
 
         .chat-footer {
             padding: 15px;
-            background-color: #1e1e1e;
-            border-top: 1px solid #333;
+            background-color: white;
+            border-top: 1px solid #e0e0e0;
             display: flex;
             animation: slideUp 0.3s ease-in-out;
         }
 
         #user-input {
             flex-grow: 1;
-            border: none;
+            border: 1px solid #e0e0e0;
             padding: 15px;
             border-radius: 30px;
             margin-right: 10px;
-            background-color: #2c2c2c;
-            color: #ffffff;
+            background-color: #f5f5f5;
+            color: #333;
             font-size: 1rem;
             transition: all 0.3s;
         }
-
+        #user-input::placeholder {
+            color: #999;
+        }
+/* Optional: Add subtle hover/focus states */
+#user-input:hover, #user-input:focus {
+    background-color: #f8f8f8;
+    outline: none;
+    border-color: #d0d0d0;
+}
         #send-button {
-            background-color: #0084ff;
+            background-color: #109ed6;
             color: white;
             border: none;
             padding: 12px 24px;
@@ -101,20 +110,20 @@
         }
 
         #send-button:hover {
-            background-color: #0073e6;
+            background-color: #0d8abf;
         }
 
 /* Adjust the avatar size and positioning to fit inside the header */
 .bot-avatar {
     width: 60px; /* Smaller size for the header */
     height: 60px;
-    background-color: #0084ff;
+    background-color: #109ed6;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 15px; /* Space between avatar and text */
-    border: 3px solid #ffffff;
+    border: 3px solid #31b6d1;
 }
 
 
@@ -126,7 +135,7 @@
 
 
         .option-button {
-            background-color: #0084ff;
+            background-color: #109ed6;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -138,6 +147,7 @@
 
         .option-button:hover {
             transform: scale(1.05);
+            background-color: #0d8abf;
         }
 
         @keyframes slideIn {
