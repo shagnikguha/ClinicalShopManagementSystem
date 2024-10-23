@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Assistant Chatbot</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            height: 100%;
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .app-container {
+            max-width: 400px;
+            margin: 0 auto;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: #1e1e1e;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+/* Adjust the chat-header to allow the bot avatar next to the text */
+.chat-header {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    align-items: center; /* Aligns content vertically */
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-bottom: 1px solid #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+        .chat-body {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .message {
+            max-width: 80%;
+            margin-bottom: 15px;
+            padding: 12px 18px;
+            border-radius: 20px;
+            line-height: 1.5;
+            opacity: 0;
+            animation: slideIn 0.5s forwards;
+        }
+
+        .bot-message {
+            align-self: flex-start;
+            background-color: #2c2c2c;
+            color: #ffffff;
+        }
+
+        .user-message {
+            align-self: flex-end;
+            background-color: #0084ff;
+            color: white;
+        }
+
+        .chat-footer {
+            padding: 15px;
+            background-color: #1e1e1e;
+            border-top: 1px solid #333;
+            display: flex;
+            animation: slideUp 0.3s ease-in-out;
+        }
+
+        #user-input {
+            flex-grow: 1;
+            border: none;
+            padding: 15px;
+            border-radius: 30px;
+            margin-right: 10px;
+            background-color: #2c2c2c;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        #send-button {
+            background-color: #0084ff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #send-button:hover {
+            background-color: #0073e6;
+        }
+
+/* Adjust the avatar size and positioning to fit inside the header */
+.bot-avatar {
+    width: 60px; /* Smaller size for the header */
+    height: 60px;
+    background-color: #0084ff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px; /* Space between avatar and text */
+    border: 3px solid #ffffff;
+}
+
+
+.bot-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+
+        .option-button {
+            background-color: #0084ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 5px;
+            transition: transform 0.2s;
+        }
+
+        .option-button:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="app-container">
+    <div class="chat-header">
+        <div class="bot-avatar">
+           <img src="{{ url_for('static', filename='images/image.webp') }}" alt="Bot Avatar">
+        </div>
+        <div>
+            <h2>Medical Assistant</h2>
+            <p>MedInfo & Basic Diagnosis</p>
+        </div>
+    </div>
+    <div class="chat-body" id="chat-container">
+        <div class="message bot-message">
+            Hello! I'm your Medical Assistant. How can I help you today?
+        </div>
+    </div>
+    <div class="chat-footer">
+        <input type="text" id="user-input" placeholder="Type your message here...">
+        <button id="send-button">Send</button>
+    </div>
+</div>
+
+
+    <script>
+        const medData = {
+            "aspirin": "Pain relief, fever reduction, blood thinning",
+            "ibuprofen": "Pain relief, anti-inflammatory",
+            "acetaminophen": "Pain relief, fever reduction",
+            "amoxicillin": "Antibiotic for bacterial infections",
+            "lisinopril": "Blood pressure control",
+            "metformin": "Type 2 diabetes management",
+            "levothyroxine": "Thyroid hormone replacement",
+            "amlodipine": "Blood pressure control",
+            "albuterol": "Bronchodilator for asthma and COPD",
+            "omeprazole": "Reduces stomach acid, treats GERD",
+            "metoprolol": "Beta-blocker for heart conditions",
+            "sertraline": "Antidepressant, treats anxiety",
+            "gabapentin": "Anticonvulsant, nerve pain treatment",
+            "losartan": "Angiotensin receptor blocker for hypertension",
+            "atorvastatin": "Cholesterol-lowering medication",
+            "escitalopram": "Antidepressant, treats anxiety and depression",
+            "fluoxetine": "Antidepressant, treats OCD and bulimia",
+            "pantoprazole": "Proton pump inhibitor, reduces stomach acid",
+            "hydrocodone": "Opioid pain medication",
+            "clopidogrel": "Antiplatelet medication, reduces risk of stroke and heart attack",
+    "doxycycline": "Antibiotic for bacterial infections, including acne and Lyme disease",
+    "furosemide": "Diuretic, helps reduce fluid retention and swelling",
+    "hydrochlorothiazide": "Diuretic, treats high blood pressure and fluid retention",
+    "azithromycin": "Antibiotic for respiratory and skin infections",
+    "gabapentin": "Anticonvulsant, treats nerve pain and seizures",
+    "prednisone": "Corticosteroid, reduces inflammation in conditions like arthritis and allergies",
+    "citalopram": "Antidepressant, treats depression and anxiety disorders",
+    "clonazepam": "Benzodiazepine, treats seizures and panic disorders",
+    "tramadol": "Opioid pain medication, used for moderate to severe pain relief",
+    "allopurinol": "Reduces uric acid levels, treats gout and kidney stones",
+    "alprazolam": "Benzodiazepine, used to treat anxiety and panic disorders",
+    "warfarin": "Anticoagulant, prevents blood clots in conditions like atrial fibrillation",
+    "rosuvastatin": "Cholesterol-lowering medication, reduces risk of heart disease",
+    "duloxetine": "Antidepressant, treats depression, anxiety, and chronic pain conditions",
+    "topiramate": "Anticonvulsant, used to treat epilepsy and prevent migraines",
+    "spironolactone": "Diuretic, treats fluid retention and high blood pressure",
+    "venlafaxine": "Antidepressant, treats depression, anxiety, and panic disorders",
+    "celecoxib": "NSAID, treats pain and inflammation in arthritis and other conditions",
+    "tamsulosin": "Alpha-blocker, treats benign prostatic hyperplasia (enlarged prostate)",
+    "zofran": "Anti-nausea medication, often used to prevent nausea and vomiting",
+    "bupropion": "Antidepressant, also used for smoking cessation",
+    "pravastatin": "Cholesterol-lowering medication, reduces risk of heart disease",
+    "clonidine": "Lowers blood pressure, also used for ADHD and withdrawal symptoms",
+    "insulin glargine": "Long-acting insulin, used to control blood sugar in diabetes",
+    "gabapentin": "Anticonvulsant, treats nerve pain and seizures",
+    "morphine": "Opioid pain medication, used for severe pain relief",
+    "lamotrigine": "Anticonvulsant, treats epilepsy and bipolar disorder",
+    "zolpidem": "Sedative, treats insomnia and helps with sleep initiation",
+    "quetiapine": "Antipsychotic, treats schizophrenia and bipolar disorder",
+    "valsartan": "Angiotensin II receptor blocker, treats high blood pressure and heart failure",
+    "ketorolac": "NSAID, treats moderate to severe pain, usually after surgery",
+    "bisoprolol": "Beta-blocker, treats high blood pressure and heart conditions",
+    "esomeprazole": "Proton pump inhibitor, reduces stomach acid and treats GERD",
+    "loratadine": "Antihistamine, treats allergy symptoms like runny nose and sneezing",
+    "montelukast": "Leukotriene receptor antagonist, treats allergies and asthma",
+    "oxycodone": "Opioid pain medication, used for moderate to severe pain relief",
+    "pioglitazone": "Thiazolidinedione, helps control blood sugar in type 2 diabetes",
+    "ranitidine": "Histamine-2 blocker, reduces stomach acid and treats ulcers",
+    "sitagliptin": "DPP-4 inhibitor, helps control blood sugar in type 2 diabetes",
+    "atenolol": "Beta-blocker, treats high blood pressure and angina",
+    "fentanyl": "Opioid pain medication, used for severe pain relief, often in patch form",
+    "methotrexate": "Immunosuppressant, treats rheumatoid arthritis and some cancers",
+    "aripiprazole": "Antipsychotic, treats schizophrenia and bipolar disorder",
+    "rifampin": "Antibiotic, treats tuberculosis and other bacterial infections",
+    "lithium": "Mood stabilizer, treats bipolar disorder",
+    "rivastigmine": "Cholinesterase inhibitor, treats dementia associated with Alzheimer's or Parkinson's",
+    "spironolactone": "Diuretic, treats heart failure, hypertension, and certain cases of hyperaldosteronism"
+        };
+
+const symptomChecker = {
+    "headache": ["Rest in a quiet, dark room", "Stay hydrated", "Consider over-the-counter pain relievers"],
+    "fever": ["Rest", "Stay hydrated", "Take fever-reducing medication if needed"],
+    "cough": ["Stay hydrated", "Use cough drops or honey", "Consider over-the-counter cough medicine"],
+    "sore throat": ["Gargle with salt water", "Drink warm liquids", "Use throat lozenges"],
+    "fatigue": ["Get plenty of rest", "Stay hydrated", "Eat a balanced diet"],
+    "nausea": ["Eat small, frequent meals", "Avoid strong odors", "Try ginger tea or peppermint"],
+    "runny nose": ["Use a saline nasal spray", "Stay hydrated", "Blow your nose gently to avoid irritation"],
+    "dizziness": ["Sit or lie down immediately", "Avoid sudden movements", "Stay hydrated"],
+    "back pain": ["Apply ice or heat", "Gentle stretching", "Over-the-counter pain relievers"],
+    "allergies": ["Avoid known triggers", "Try over-the-counter antihistamines", "Use a nasal rinse"],
+    "insomnia": ["Establish a regular sleep schedule", "Avoid screens before bedtime", "Create a comfortable sleep environment"],
+    "constipation": ["Increase fiber intake", "Stay hydrated", "Regular exercise"],
+    "diarrhea": ["Stay hydrated", "Eat bland foods (BRAT diet)", "Avoid dairy and high-fat foods"],
+    "muscle pain": ["Rest the affected area", "Apply ice or heat", "Gentle stretching"],
+    "anxiety": ["Practice deep breathing", "Try meditation or mindfulness", "Regular exercise"],
+    "skin rash": ["Avoid scratching", "Apply cool compress", "Use over-the-counter hydrocortisone cream"],
+    "indigestion": ["Eat slowly and avoid large meals", "Avoid trigger foods", "Try over-the-counter antacids"],
+    "cold": ["Rest", "Stay hydrated", "Use over-the-counter cold medications"],
+    "eye strain": ["Take frequent breaks from screens", "Use artificial tears", "Adjust lighting in your environment"],
+    "joint pain": ["Apply ice or heat", "Gentle exercises", "Consider over-the-counter pain relievers"],
+    "bloating": ["Avoid gas-producing foods", "Eat slowly", "Try peppermint tea"],
+    "acid reflux": ["Avoid spicy and fatty foods", "Eat smaller meals", "Stay upright after eating"],
+    "acne": ["Cleanse your skin gently", "Avoid oily skincare products", "Use non-comedogenic makeup"],
+    "anemia": ["Increase iron-rich foods like spinach and red meat", "Consider iron supplements", "Avoid tea and coffee with meals as they can inhibit iron absorption"],
+    "asthma": ["Avoid known triggers", "Use a prescribed inhaler", "Maintain a clean environment to reduce allergens"],
+    "bronchitis": ["Stay hydrated", "Avoid smoking and secondhand smoke", "Use a humidifier to soothe airways"],
+    "burns": ["Cool the burn with running water", "Apply aloe vera or burn ointment", "Cover with a sterile bandage"],
+    "chest pain": ["Avoid strenuous activities", "Take deep breaths", "Seek immediate medical attention if pain is severe or persistent"],
+    "chills": ["Stay warm with blankets", "Drink warm fluids", "Rest in a comfortable environment"],
+    "dehydration": ["Drink plenty of water", "Avoid caffeine and alcohol", "Use oral rehydration solutions if necessary"],
+    "dry eyes": ["Use lubricating eye drops", "Blink regularly when using screens", "Use a humidifier to add moisture to the air"],
+    "earache": ["Apply a warm compress to the ear", "Avoid inserting objects into the ear", "Take over-the-counter pain relievers if needed"],
+    "eczema": ["Moisturize skin frequently", "Use hypoallergenic products", "Avoid hot showers and harsh soaps"],
+    "foot pain": ["Rest and elevate the foot", "Apply ice to reduce swelling", "Wear supportive footwear"],
+    "gastritis": ["Avoid alcohol and spicy foods", "Eat smaller, more frequent meals", "Take antacids or other medications as prescribed"],
+    "hair loss": ["Maintain a balanced diet rich in proteins and vitamins", "Avoid tight hairstyles", "Consult a dermatologist for treatments"],
+    "heart palpitations": ["Practice relaxation techniques like deep breathing", "Avoid caffeine and nicotine", "Stay hydrated"],
+    "hemorrhoids": ["Increase fiber intake", "Use over-the-counter creams or ointments", "Avoid straining during bowel movements"],
+    "hip pain": ["Rest and avoid activities that worsen pain", "Apply ice or heat", "Perform gentle stretches or exercises as recommended"],
+    "hot flashes": ["Dress in layers to adjust to temperature changes", "Avoid triggers like spicy foods and caffeine", "Practice deep breathing exercises"],
+    "itchy skin": ["Apply moisturizing lotions", "Avoid hot showers", "Use anti-itch creams or antihistamines if needed"],
+    "knee pain": ["Rest and elevate the leg", "Apply ice to reduce swelling", "Perform strengthening exercises as recommended by a professional"],
+    "leg cramps": ["Stretch and massage the affected muscle", "Stay hydrated", "Consume foods rich in potassium like bananas"],
+    "migraine": ["Rest in a dark, quiet room", "Apply a cold compress to the forehead", "Avoid known triggers like certain foods and stress"],
+    "nosebleeds": ["Pinch the nostrils together", "Lean forward and breathe through the mouth", "Apply a cold compress to the nose"],
+    "osteoporosis": ["Increase calcium and vitamin D intake", "Engage in weight-bearing exercises", "Avoid smoking and excessive alcohol consumption"],
+    "pneumonia": ["Rest and stay hydrated", "Take prescribed antibiotics if bacterial", "Use a humidifier to ease breathing"],
+    "psoriasis": ["Keep skin moisturized", "Avoid known triggers like stress", "Use medicated creams or ointments as prescribed"],
+    "ringworm": ["Keep affected area clean and dry", "Use antifungal creams or ointments", "Avoid sharing personal items"],
+    "sciatica": ["Avoid sitting for long periods", "Apply heat or cold packs", "Perform gentle stretches as recommended"],
+    "sinus infection": ["Stay hydrated", "Use a saline nasal spray", "Apply warm compresses to the face"],
+    "stiff neck": ["Apply heat or cold packs", "Practice gentle neck stretches", "Maintain good posture"],
+    "sunburn": ["Stay out of the sun until healed", "Apply aloe vera or moisturizer", "Drink plenty of water to stay hydrated"],
+    "tendonitis": ["Rest the affected tendon", "Apply ice to reduce swelling", "Perform strengthening exercises gradually"],
+    "toothache": ["Rinse with warm salt water", "Apply a cold compress to the outside of the cheek", "Take over-the-counter pain relievers if needed"],
+    "urinary tract infection": ["Drink plenty of water", "Avoid caffeine and alcohol", "Take prescribed antibiotics"],
+    "varicose veins": ["Elevate legs when resting", "Avoid standing for long periods", "Wear compression stockings"],
+    "vertigo": ["Avoid sudden head movements", "Practice balance exercises", "Stay hydrated"],
+    "warts": ["Avoid picking at warts", "Use over-the-counter treatments like salicylic acid", "Cover with a bandage to prevent spreading"],
+    "whiplash": ["Rest and avoid strenuous activity", "Apply ice to reduce swelling", "Use over-the-counter pain relief if needed"]
+};
+
+
+
+        const chatContainer = document.getElementById('chat-container');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+
+        let currentMode = null;
+        let userSymptoms = [];
+
+        function formatSymptomAdvice(symptom, adviceList) {
+            return `<strong>For ${symptom}:</strong><ul>${adviceList.map(advice => `<li>${advice}</li>`).join('')}</ul>`;
+        }
+
+        function addMessage(message, isUser = false) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.classList.add(isUser ? 'user-message' : 'bot-message');
+            messageElement.innerHTML = message;
+            chatContainer.appendChild(messageElement);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function addOptionsButtons() {
+            const buttonsContainer = document.createElement('div');
+            buttonsContainer.innerHTML = `
+                <button class="option-button" onclick="setMode('medinfo')">MedInfo</button>
+                <button class="option-button" onclick="setMode('diagnosis')">Basic Diagnosis</button>
+            `;
+            chatContainer.appendChild(buttonsContainer);
+        }
+
+        function setMode(mode) {
+            currentMode = mode;
+            if (mode === 'medinfo') {
+                addMessage("You've selected MedInfo. Please type the name of a medication to get information.");
+            } else if (mode === 'diagnosis') {
+                addMessage("You've selected Basic Diagnosis. Please note that this is for educational purposes only and should not replace professional medical advice.");
+                addMessage("What's your main symptom? (e.g., headache, fever, cough)");
+            }
+        }
+
+function extractEntities(userMessage, data) {
+    // Split the sentence by spaces, commas, or periods, and trim each word
+    const words = userMessage.toLowerCase().split(/\s|,|\./).map(word => word.trim());
+    // Filter out any empty strings or unknown entities
+    return words.filter(word => data[word]);
+}
+
+function handleMedInfo(userMessage) {
+    const foundMeds = extractEntities(userMessage, medData);
+    let response = '';
+
+    if (foundMeds.length > 0) {
+        foundMeds.forEach(med => {
+            response += `<strong>${med.charAt(0).toUpperCase() + med.slice(1)}:</strong> ${medData[med]}<br><br>`;
+        });
+        addMessage(response);
+        addMessage("Type 'menu' to return to the main menu.");
+    } else {
+        addMessage("Sorry, I couldn't find information on the medication(s) mentioned.");
+    }
+}
+
+function handleDiagnosis(userMessage) {
+    const foundSymptoms = extractEntities(userMessage, symptomChecker);
+    let advice = '';
+
+    if (foundSymptoms.length > 0) {
+        advice = "<strong>Based on your symptoms, here's some general advice:</strong><br><br>";
+        foundSymptoms.forEach(symptom => {
+            advice += formatSymptomAdvice(symptom, symptomChecker[symptom]);
+        });
+        addMessage(advice);
+        addMessage("Type 'menu' to return to the main menu.");
+    } else {
+        addMessage("Sorry, I couldn't find advice for the symptoms mentioned.");
+    }
+}
+
+function handleUserInput() {
+    const userMessage = userInput.value.trim().toLowerCase();
+    if (userMessage) {
+        addMessage(userMessage, true);
+
+        if (userMessage === 'menu') {
+            currentMode = null;
+            addMessage("Welcome back to the main menu. Please choose an option:");
+            addOptionsButtons();
+        } else if (currentMode === 'medinfo') {
+            handleMedInfo(userMessage);
+        } else if (currentMode === 'diagnosis') {
+            handleDiagnosis(userMessage);
+        } else {
+            addMessage("Please choose an option:");
+            addOptionsButtons();
+        }
+
+        userInput.value = '';
+    }
+}
+
+sendButton.addEventListener('click', handleUserInput);
+userInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        handleUserInput();
+    }
+});
+
+        // Initial welcome message
+        addMessage("Welcome to the Medical Assistant! Please choose an option:");
+        addOptionsButtons();
+    </script>
+</body>
+</html>
