@@ -1,6 +1,7 @@
 import express from "express";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import cors from 'cors'
 import path from 'path';
 import dotenv from 'dotenv';
 import connectToMongoDB from "./db/mongodbconn.js";
@@ -26,7 +27,17 @@ const port = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../frontend/views'));
 
+const corsOptions = {
+    origin: ['http://localhost:5000', 'http://127.0.0.1:5000'], // Allow Flask server
+    methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true  // Required for cookies, authorization headers with HTTPS
+};
+
+app.use(cors(corsOptions));
+
 // Parse URL-encoded bodies and JSON
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -70,10 +81,10 @@ passport.use(new LocalStrategy( async function verify(email, password, cb) {
 
         if (user.googleId) {
             console.log("User registered through Google auth. Please log in using Google.")
-            return cb(null, false, { message: "User registered through Google auth. Please log in using Google." });
+            return cb(null, false, { message: "Incorrect Username or Password" });
         }
 
-        const isMatch =  bcrypt.compare(password, user.password);
+        const isMatch = await bcrypt.compare(password, user.password);
         if (isMatch) {
             return cb(null, user); // Successful authentication
         } else {
@@ -87,9 +98,10 @@ passport.use(new LocalStrategy( async function verify(email, password, cb) {
 
 // Passport Google OAuth Strategy
 passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientID: process.env.GOOGLE_CLIENT_ID,// Using environment variable
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL:"http://localhost:3000/auth/google/secrets" , // Using environment variable
+    callbackURL:"http://localhost:3000/auth/google/secrets" ,
+    prompt: 'select_account' ,
 },
     async function (accessToken, refreshToken, profile, cb) {
         try {

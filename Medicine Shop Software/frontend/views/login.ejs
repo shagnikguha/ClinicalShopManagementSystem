@@ -4,8 +4,15 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="/login/globals.css" />
     <link rel="stylesheet" href="/login/style.css" />
+    <!-- Add this right before closing body tag -->
   </head>
   <body>
+    <!-- Add this right after your body tag opens -->
+   <input type="hidden" id="errorState" 
+    data-has-error="<%= typeof error !== 'undefined' ? error : false %>"
+     data-error-message="<%= typeof errmssg !== 'undefined' ? errmssg : '' %>"
+     data-current-view="<%= typeof currentView !== 'undefined' ? currentView : 'login' %>"
+         >
     <div class="login-page">
       <div class="logo"><div class="text-wrapper">MediEase</div></div>
       <div id="login-box" class="login-box">
@@ -26,7 +33,7 @@
         <div class="right-half">
           <div class="div-2">
             <div class="text-wrapper-2">Sign in</div>
-            <p class="p">Don't have an account? <a href="#" onclick="showCreateAccount(); return false;">Create an account</a></p>
+            <p class="p">Don't have an account? <a href="/register" onclick="showCreateAccount(); return false;">Create an account</a></p>
           </div>
           <form method="post" action="/login" class="input-area">
             <input type="email" name="username" class="email-container" placeholder="Email" required />
@@ -54,7 +61,7 @@
         <img class="cross-btn" src="https://c.animaapp.com/HuNhLGux/img/cross-btn@2x.png" />
         <div class="text-container">
           <div class="text-wrapper-6">Oops</div>
-          <div class="text-wrapper-7">Something went wrong!</div>
+          <div class="text-wrapper-7"><%= typeof errmssg !== 'undefined' ? errmssg : 'Something went wrong!' %></div>
         </div>
         <a href="/login">
           <div class="OK-btn">
@@ -82,7 +89,7 @@
         <div class="right-half-2">
           <div class="div-2">
             <div class="text-wrapper-2">Create an account</div>
-            <p class="p">Already have an account? <a href="/register" onclick="showLogin(); return false;">Log in</a></p>
+            <p class="p">Already have an account? <a href="/login" onclick="showLogin(); return false;">Log in</a></p>
           </div>
           <form method="post" action="/register" class="input-area-2">
             <div class="first-line">

@@ -57,7 +57,8 @@ searchRouter.get('/search/:category', Authenticated, async (req, res) => {
       console.log('error:', err.message);
       return res.render('search', { medicines: null, err: 'Error while loading medicines!' });
    }
-})
+});
+
 
 
 export default searchRouter;

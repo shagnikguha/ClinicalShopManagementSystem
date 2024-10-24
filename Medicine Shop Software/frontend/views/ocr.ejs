@@ -40,7 +40,7 @@
         const dropZone = document.getElementById('drop-zone');
         const fileInput = document.getElementById('file-input');
         const resultDiv = document.getElementById('result');
-
+    
         dropZone.addEventListener('click', () => fileInput.click());
         dropZone.addEventListener('dragover', (event) => {
             event.preventDefault();
@@ -57,15 +57,46 @@
             const file = event.target.files[0];
             if (file) handleFileUpload(file);
         });
-
+    
         function handleFileUpload(file) {
             const formData = new FormData();
-            formData.append('image', file);
-
-            fetch('/upload', { method: 'POST', body: formData })
+            formData.append('image', file);  // Corrected variable reference
+    
+            // Send the image to Flask /ocr route
+            fetch('http://localhost:5000/ocr', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    console.error(data.error);
+                    resultDiv.textContent = `Error: ${data.error}`;  // Display error to user
+                    return;
+                }
+    
+                // Now send the detected medicines to the Express backend
+                fetch('http://localhost:3000/cart/add-from-ocr', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ medicines: data.medicines }),
+                })
                 .then(response => response.json())
-                .then(data => resultDiv.textContent = "Extracted Text: " + data.text)
-                .catch(error => console.error('Error:', error));
+                .then(cartResponse => {
+                    console.log('Cart updated:', cartResponse);
+                    resultDiv.textContent = `Medicines added to cart: ${cartResponse.medicines.join(', ')}`;  // Display success message
+                })
+                .catch(err => {
+                    console.error('Error updating cart:', err);
+                    resultDiv.textContent = `Error updating cart: ${err.message}`;  // Display error to user
+                });
+            })
+            .catch(err => {
+                console.error('Error processing OCR:', err);
+                resultDiv.textContent = `Error processing OCR: ${err.message}`;  // Display error to user
+            });
         }
     </script>
 </body>

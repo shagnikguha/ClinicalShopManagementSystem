@@ -47,9 +47,17 @@ const register_post = async (req, res) => {
         const isUser = await User.findOne({ email: email });
         if (isUser) {
             if(isUser.googleId){
-                return res.status(409).render('login',{ err: "User authenticated through google!" });  
+                return res.render('login', { 
+                    error: true,  
+                    errmssg: "User authenticated through google!",
+                    currentView: 'login' 
+                });  
             }
-            return res.status(409).render('login',{ err: "User already exists!" }); // 409 Conflict
+            return res.render('login', { 
+                error: true, 
+                errmssg: "User already exists!",
+                currentView: 'login' 
+            });
         }
 
         // Hash the password
@@ -63,17 +71,21 @@ const register_post = async (req, res) => {
         });
 
         if(req.body.number){
-            user.phone= req.body.number;
+            user.phone = req.body.number;
         }
 
         // Save the user to the database
         await user.save();
 
         // Respond with success
-        res.redirect('/login') // 201 Created
+        res.redirect('/login')
     } catch (err) {
         console.error('Registration error:', err.message);
-        res.status(500).json({ err: 'Internal server error' });
+        return res.render('login', { 
+            error: true,
+            errmssg: 'Internal server error',
+            currentView: 'register'
+        });
     }
 }
 

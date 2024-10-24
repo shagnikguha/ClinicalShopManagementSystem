@@ -9,6 +9,14 @@ const cartrouter = Router();
 let previousCart={}
 // Middleware for checking authentication
 const Authenticated = (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5000');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    
+    if (req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Methods', 'GET, POST, DELETE');
+        res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        return res.status(200).json({});
+    }
     if (req.isAuthenticated())
         return next();
     res.redirect('/login');
@@ -140,44 +148,69 @@ cartrouter.post('/cart/remove', Authenticated, async (req, res) => {
 });
 
 // POST /cart/add-from-ocr: Add items extracted from OCR to the cart
-cartrouter.post('/cart/add-from-ocr', async (req, res) => {
-    const { medicines, userId } = req.body;
+cartrouter.post('/cart/add-from-ocr', Authenticated, async (req, res) => {
+    const medicines = req.body.medicines;
+    console.log(medicines);
 
-    if (!medicines || medicines.length === 0 || !userId) {
-        return res.status(400).json({ error: 'Medicines and user ID are required.' });
+    if (!medicines || medicines.length === 0) {
+        return res.status(400).json({ error: 'Medicines are required.' });
     }
 
     try {
-        let cart = await Cart.findOne({ userId: userId, paid: false });
+        // Check if there's a paid cart
+        let paidCart = await Cart.findOne({ userId: req.user._id, paid: true });
+        
+        if (paidCart) {
+            // Move paid cart to prevCart
+            const paidCartObject = paidCart.toObject();
+            delete paidCartObject._id; // Remove the _id field
 
-        if (!cart) { // If no cart exists, create a new cart
+            await prevCart.findOneAndUpdate(
+                { userId: req.user._id, paid: true },
+                { $set: paidCartObject },
+                { upsert: true, new: true }
+            );
+            await Cart.deleteOne({ _id: paidCart._id });
+        }
+
+        // Find or create unpaid cart
+        let cart = await Cart.findOne({ userId: req.user._id, paid: false });
+        if (!cart) {
             cart = new Cart({
-                userId: userId,
+                userId: req.user._id,
                 items: [],
                 paid: false,
             });
         }
 
         // Add each medicine to the cart
+        let addedMedicines = []; // Store successfully added medicines
+
         for (let medicineName of medicines) {
             const medicine = await Medicine.findOne({ name: medicineName });
             if (medicine) {
-                const itemExists = cart.items.find(item => item.medicineId.toString() === medicine._id.toString());
-                if (itemExists) {
-                    itemExists.quantity += 1; // Increment quantity if it exists
+                const existingItem = cart.items.find(item => item.medicineId.toString() === medicine._id.toString());
+                if (existingItem) {
+                    const newQuantity = existingItem.quantity + 1;
+                    existingItem.quantity = Math.min(newQuantity, medicine.stockQuantity);
                 } else {
-                    cart.items.push({ medicineId: medicine._id, quantity: 1 });
+                    cart.items.push({
+                        medicineId: medicine._id,
+                        quantity: 1
+                    });
                 }
+                addedMedicines.push(medicineName);  // Add to the list of successfully added medicines
             }
         }
 
         // Save the updated cart
         await cart.save();
-        console.log("worked");
-        res.json({ message: 'Medicines added to the cart', cart });
+
+        console.log("Medicines added to the cart:", addedMedicines);
+        res.json({ message: 'Medicines added to the cart', addedMedicines, cart });
     } catch (err) {
         console.error('Error adding medicines from OCR:', err.message);
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ error: 'Internal server error', details: err.message });
     }
 });
 

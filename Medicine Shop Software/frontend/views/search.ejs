@@ -10,13 +10,11 @@
       <div class="top-carousel">
         <div class="navbar">
           <div class="navbar-clickables">
-            <div class="div-wrapper">
-              <p class="home"><span class="text-wrapper">Hom</span> <span class="span">e</span></p>
-            </div>
-            <div class="div-wrapper"><div class="div">Products</div></div>
-            <div class="div-wrapper"><div class="div">About Us</div></div>
+            <a href="#products"><div class="div-wrapper"><div class="div">Products</div></div></a>
+            <a href="#footer"><div class="div-wrapper"><div class="div">About Us</div></div></a>
+            <div class="div-wrapper"><div class="div">Logout</div></div>
           </div>
-          <div class="logo"><div class="text-wrapper-2">MediEase</div></div>
+          <a href="/"><div class="logo"><div class="text-wrapper-2">MediEase</div></div></a>
         </div>
         <div class="background-img"><img class="image" src="https://c.animaapp.com/1TLSPjG7/img/image-11.png" /></div>
         <form method="POST" class="search-bar">
@@ -66,8 +64,8 @@
             </div>
           </a>
         </div>
-        <div class="search-res">
-          <% if(locals.medicines) {%>
+        <div id="products" class="search-res">
+          <% if(locals.medicines) { %>
           <% for(var i=0;i<medicines.length;i++) { %>
           <div class="card">
             <div class="card-img-container">
@@ -90,7 +88,7 @@
           <% } %>
         </div>
       </div>
-      <footer class="footer">
+      <footer id="footer" class="footer">
         <img class="img" src="https://c.animaapp.com/1TLSPjG7/img/vector-11.png" />
         <div class="footer-first-row">
           <div class="site-info">
@@ -151,9 +149,17 @@
         <div class="cart-btn">
         <div class="shopping-items">
           <img class="shopping-bag" src="https://c.animaapp.com/1TLSPjG7/img/shopping-bag@2x.png" />
+          <% if(locals.items) { %>
           <div class="num-item-text"><div class="text-wrapper-19"><%=items %> items></div></div>
+          <% } else { %>
+            <div class="num-item-text"><div class="text-wrapper-19">0 items></div></div> 
+            <% } %>
         </div>
+        <% if(locals.price) { %>
         <div class="cost-btn"><div class="text-wrapper-20">₹ <%=price %> </div>
+        <% } else { %>
+          <div class="cost-btn"><div class="text-wrapper-20">₹ 0 </div>
+          <% } %>
       </div>
       </a>
       <div class="cart-slider">
