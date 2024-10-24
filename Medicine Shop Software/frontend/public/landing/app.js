@@ -1,7 +1,3 @@
-
-function openChatbot() {
-    window.open("https://saiyangodgoku.pythonanywhere.com", "_blank");
-  }
 document.addEventListener('DOMContentLoaded', function() {
     const footerLinks = document.querySelectorAll('a[href="#footer"]');
     const footer = document.getElementById('footer');
