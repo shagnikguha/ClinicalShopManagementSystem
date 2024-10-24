@@ -338,8 +338,7 @@
   }
   
   .login-page .failure-pop-up {
-    display: flex;
-    display: none;
+    display: none; /* Initially hidden */
     flex-direction: column;
     width: 926px;
     height: 559px;
@@ -353,7 +352,7 @@
     border-radius: 46px;
     overflow: hidden;
     box-shadow: 8px 10px 18.4px 10px #00000040;
-  }
+}
   
   .login-page .cross-btn {
     position: relative;

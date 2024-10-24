@@ -11,10 +11,34 @@ router.get('/register',(req,res)=>{
 })
 
 // Login Route using Passport's authenticate middleware
-router.post('/login', passport.authenticate("local", {
-    successRedirect: "/search",
-    failureRedirect: "/login",
-}));
+router.post('/login', (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+        if (err) {
+            return res.render('login', { 
+                error: true,
+                errmssg: 'An error occurred during login.'
+            });
+        }
+        
+        if (!user) {
+            // This will show the message from LocalStrategy
+            return res.render('login', { 
+                error: true,
+                errmssg: info.message 
+            });
+        }
+        
+        req.logIn(user, (err) => {
+            if (err) {
+                return res.render('login', { 
+                    error: true,
+                    errmssg: 'An error occurred during login.'
+                });
+            }
+            return res.redirect('/search');
+        });
+    })(req, res, next);
+});
 
 // Route to render 'hometype' view
 
@@ -23,11 +47,12 @@ router.get('/login', (req, res) => {
     res.render('login'); 
 });
 
-// Protected Route: '/secrets'
-router.get('/secrets', (req, res) => {
-    if (req.isAuthenticated()) {
-        res.render('secrets'); 
-    } else {
+router.get('/ocr',(req,res)=>{
+    if(req.isAuthenticated()){
+        res.render('ocr');
+    }
+
+    else{
         res.redirect('/login');
     }
 });
@@ -39,6 +64,11 @@ router.get('/auth/google',passport.authenticate("google",{
 router.get('/auth/google/secrets',passport.authenticate("google",{
     successRedirect: '/search',
     failureRedirect: '/login',
-}))
+}));
+
+router.get('/auth/logout', (req, res) => {
+    req.logout();
+    res.redirect('/login');
+});
 
 export default router;
