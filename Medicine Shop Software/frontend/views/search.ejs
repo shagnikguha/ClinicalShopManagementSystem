@@ -114,9 +114,8 @@
           </div>
           <div class="quick-links">
             <div class="text-wrapper-15">Quick Links</div>
-            <div class="text-wrapper-16">Home</div>
-            <div class="text-wrapper-16">Admin Login</div>
-            <div class="text-wrapper-17">Prescription Upload</div>
+            <a href="/"><div class="text-wrapper-16">Home</div></a>
+            <a href="/ocr"><div class="text-wrapper-17">Prescription Upload</div></a>
             <div class="text-wrapper-17">Chatbot</div>
           </div>
           <div class="follow-us">
@@ -150,9 +149,9 @@
         <div class="shopping-items">
           <img class="shopping-bag" src="https://c.animaapp.com/1TLSPjG7/img/shopping-bag@2x.png" />
           <% if(locals.items) { %>
-          <div class="num-item-text"><div class="text-wrapper-19"><%=items %> items></div></div>
+          <div class="num-item-text"><div class="text-wrapper-19"><%=items %> items</div></div>
           <% } else { %>
-            <div class="num-item-text"><div class="text-wrapper-19">0 items></div></div> 
+            <div class="num-item-text"><div class="text-wrapper-19">0 items</div></div> 
             <% } %>
         </div>
         <% if(locals.price) { %>
@@ -162,40 +161,6 @@
           <% } %>
       </div>
       </a>
-      <div class="cart-slider">
-        <div class="cart-header">
-          <div class="cart-header-icons">
-            <div class="cart-header-count">
-              <img class="shopping-bag-2" src="https://c.animaapp.com/1TLSPjG7/img/shopping-bag-1@2x.png" />
-              <div class="text-wrapper-21">0 Item</div>
-            </div>
-            <img class="cross" src="https://c.animaapp.com/1TLSPjG7/img/cross@2x.png" />
-          </div>
-          <img class="vector-2" src="https://c.animaapp.com/1TLSPjG7/img/vector-12@2x.png" />
-        </div>
-        <div class="checkout-slider">
-          <div class="text-wrapper-22">Checkout</div>
-          <div class="checkout-btn"><div class="text-wrapper-23">₹ 00.00</div></div>
-        </div>
-        <div class="empty-card-display">
-          <img class="no-item-img" src="https://c.animaapp.com/1TLSPjG7/img/no-item-img@2x.png" />
-          <div class="text-wrapper-24">No products found</div>
-        </div>
-        <div class="checkout-card">
-          <div class="med-card-info">
-            <div class="cart-quantity"><div class="text-wrapper-25">1</div></div>
-            <div class="medicine-img">
-              <img class="med-img-2" src="https://c.animaapp.com/1TLSPjG7/img/med-img-1@2x.png" />
-            </div>
-            <div class="base-med-info">
-              <div class="text-wrapper-26">Allegra-180mg</div>
-              <div class="base-price-txt">₹ 160.00</div>
-            </div>
-            <div class="med-total-price-txt">₹ 160.00</div>
-            <img class="remove-item" src="https://c.animaapp.com/1TLSPjG7/img/remove-item@2x.png" />
-          </div>
-        </div>
-      </div>
     </div>
     <script src="/search/app.js"></script>
   </body>

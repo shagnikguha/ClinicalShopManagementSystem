@@ -55,15 +55,6 @@ router.get('/ocr',(req,res)=>{
     else{
         res.redirect('/login');
     }
-})
-
-// Protected Route: '/secrets'
-router.get('/secrets', (req, res) => {
-    if (req.isAuthenticated()) {
-        res.render('secrets'); 
-    } else {
-        res.redirect('/login');
-    }
 });
 
 router.get('/auth/google',passport.authenticate("google",{
