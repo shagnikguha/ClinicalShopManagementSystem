@@ -1,162 +1,351 @@
-import streamlit as st
-import google.generativeai as genai
-import os
-from datetime import datetime
-import re
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="home-page">
+      <div class="div">
+        <div class="overlap">
+          <div class="macbook-air">
+            <footer class="footer">
+              <div class="overlap-group">
+                <div class="footer-text">
+                  <div class="text-wrapper">MediEase</div>
+                  <p class="p">
+                    We are dedicated to providing accessible healthcare solutions with quality medicines delivered right
+                    to your doorstep. Your health is our top priority.
+                  </p>
+                  <div class="mail">
+                    <div class="text-wrapper-2">contact@example.com</div>
+                    <img class="mail-svg" src="https://c.animaapp.com/54PlmdXX/img/mail-svg@2x.png" />
+                  </div>
+                  <div class="phone">
+                    <img class="phone-svg" src="https://c.animaapp.com/54PlmdXX/img/phone-svg@2x.png" />
+                    <div class="text-wrapper-3">+91-8810470168</div>
+                  </div>
+                  <div class="text-wrapper-4">Contact Us</div>
+                  <div class="text-wrapper-5">Home</div>
+                  <div class="text-wrapper-6">Admin Login</div>
+                  <div class="text-wrapper-7">Prescription Upload</div>
+                  <div class="text-wrapper-8">Chatbot</div>
+                  <p class="address">MIT Campus-Udupi - Karkala Rd,<br />Eshwar Nagar, Manipal, Karnataka 576104</p>
+                  <div class="text-wrapper-9">Quick Links</div>
+                  <p class="the-information">
+                    The information provided on this website is for educational purposes only.<br />Please consult your
+                    doctor for medical advice before purchasing any medication. <br />All orders are subject to
+                    prescription verification.
+                  </p>
+                  <div class="text-wrapper-10">Description</div>
+                  <div class="text-wrapper-11">Follow us</div>
+                  <div class="instagram">
+                    <img class="IG-icon" src="https://c.animaapp.com/54PlmdXX/img/ig-icon@2x.png" />
+                    <div class="text-wrapper-12">Ease_with_Med</div>
+                  </div>
+                  <div class="x">
+                    <div class="x-icon-wrapper">
+                      <img class="x-icon" src="https://c.animaapp.com/54PlmdXX/img/x-icon@2x.png" />
+                    </div>
+                    <div class="text-wrapper-13">Med@Ease</div>
+                  </div>
+                </div>
+                <img class="footer-underline" src="https://c.animaapp.com/54PlmdXX/img/footer-underline.png" />
+                <p class="copyright-text">© 2024 MediEase. All Rights Reserved.</p>
+              </div>
+            </footer>
+          </div>
+          <div class="trending-products">
+            <div class="trending-products-2">
+              <div class="card">
+                <div class="card-text-div">
+                  <div class="overlap-2">
+                    <div class="card-text-BG"></div>
+                    <div class="card-medName">Allegra- 180mg</div>
+                    <button class="add-to-cart-btn">
+                      <div class="overlap-group-2">
+                        <div class="ADD-to-cart-boundary"></div>
+                        <div class="Add-to-cart-text">Add to cart</div>
+                        <img class="plus-sign" src="https://c.animaapp.com/54PlmdXX/img/plus-sign-5@2x.png" />
+                      </div>
+                    </button>
+                    <p class="card-description">
+                      For fast relief from sneezing, runny nose, and itchy eyes caused by allergies.
+                    </p>
+                    <div class="card-price">₹ 160/-</div>
+                  </div>
+                </div>
+                <div class="overlap-3">
+                  <div class="med-shadow"></div>
+                  <img class="allegra-image" src="https://c.animaapp.com/54PlmdXX/img/allegra-image-1-5@2x.png" />
+                </div>
+              </div>
+              <div class="card-2">
+                <div class="card-text-div">
+                  <div class="overlap-2">
+                    <div class="card-text-BG"></div>
+                    <div class="card-medName">Allegra- 180mg</div>
+                    <button class="add-to-cart-btn">
+                      <div class="overlap-group-2">
+                        <div class="ADD-to-cart-boundary"></div>
+                        <div class="Add-to-cart-text">Add to cart</div>
+                        <img class="plus-sign" src="https://c.animaapp.com/54PlmdXX/img/plus-sign-5@2x.png" />
+                      </div>
+                    </button>
+                    <p class="card-description">
+                      For fast relief from sneezing, runny nose, and itchy eyes caused by allergies.
+                    </p>
+                    <div class="card-price">₹ 160/-</div>
+                  </div>
+                </div>
+                <div class="overlap-3">
+                  <div class="med-shadow"></div>
+                  <img class="allegra-image" src="https://c.animaapp.com/54PlmdXX/img/allegra-image-1-5@2x.png" />
+                </div>
+              </div>
+              <div class="card-3">
+                <div class="card-text-div">
+                  <div class="overlap-2">
+                    <div class="card-text-BG"></div>
+                    <div class="card-medName">Allegra- 180mg</div>
+                    <button class="overlap-group-wrapper">
+                      <div class="overlap-group-2">
+                        <div class="ADD-to-cart-boundary"></div>
+                        <div class="Add-to-cart-text">Add to cart</div>
+                        <img class="plus-sign" src="https://c.animaapp.com/54PlmdXX/img/plus-sign-5@2x.png" />
+                      </div>
+                    </button>
+                    <p class="card-description">
+                      For fast relief from sneezing, runny nose, and itchy eyes caused by allergies.
+                    </p>
+                    <div class="card-price">₹ 160/-</div>
+                  </div>
+                </div>
+                <div class="overlap-3">
+                  <div class="med-shadow"></div>
+                  <img class="allegra-image" src="https://c.animaapp.com/54PlmdXX/img/allegra-image-1-5@2x.png" />
+                </div>
+              </div>
+              <div class="trending-header">Trending products<br />for you!</div>
+              <div class="see-all-product-btn">
+                <div class="text-wrapper-18">SEE ALL PRODUCTS</div>
+                <img class="arrow" src="https://c.animaapp.com/54PlmdXX/img/arrow-1@2x.png" />
+              </div>
+            </div>
+          </div>
+          <div class="ICONS">
+            <img class="easy-returns-icon" src="https://c.animaapp.com/54PlmdXX/img/easy-returns-icon@2x.png" />
+            <img class="delivery-icon" src="https://c.animaapp.com/54PlmdXX/img/delivery-icon@2x.png" />
+            <img class="customer-support" src="https://c.animaapp.com/54PlmdXX/img/customer-support-icon@2x.png" />
+            <img class="security" src="https://c.animaapp.com/54PlmdXX/img/security@2x.png" />
+            <div class="overlap-4">
+              <div class="text-wrapper-19">Free Easy Returns</div>
+              <div class="text-wrapper-20">Return within 7 days</div>
+            </div>
+            <div class="delivery-text-1">Free Delivery Monday</div>
+            <div class="customer-support-text1">All Day Support</div>
+            <div class="security-text1">Secure Checkout</div>
+            <div class="delivery-text-2">Orders above ₹499</div>
+            <div class="customer-support-text2">24/7 Support Care</div>
+            <div class="security-text2">100% Protected by Google</div>
+          </div>
+          <div class="BG-gradience">
+            <div class="overlap-5">
+              <div class="background"></div>
+              <img class="rectangle" src="https://c.animaapp.com/54PlmdXX/img/rectangle-1.png" />
+              <img class="rect" src="https://c.animaapp.com/54PlmdXX/img/rect2@2x.png" />
+              <img class="img" src="https://c.animaapp.com/54PlmdXX/img/rectangle-3@2x.png" />
+              <img class="rectangle-2" src="https://c.animaapp.com/54PlmdXX/img/rectangle-4.png" />
+              <img class="rectangle-3" src="https://c.animaapp.com/54PlmdXX/img/rectangle-11.png" />
+              <img class="rect-2" src="https://c.animaapp.com/54PlmdXX/img/rect5@2x.png" />
+              <img class="rectangle-4" src="https://c.animaapp.com/54PlmdXX/img/rectangle-6.png" />
+              <img class="rectangle-5" src="https://c.animaapp.com/54PlmdXX/img/rectangle-7@2x.png" />
+              <img class="rectangle-6" src="https://c.animaapp.com/54PlmdXX/img/rectangle-8@2x.png" />
+              <img class="rectangle-7" src="https://c.animaapp.com/54PlmdXX/img/rectangle-9@2x.png" />
+              <img class="rect-3" src="https://c.animaapp.com/54PlmdXX/img/rect-10@2x.png" />
+            </div>
+          </div>
+          <div class="slider">
+            <div class="slide">
+              <div class="carousel">
+                <div class="overlap-6">
+                  <div class="carousel-boundary"></div>
+                  <div class="ellipse"></div>
+                  <img class="eliipse" src="https://c.animaapp.com/54PlmdXX/img/eliipse-9.png" />
+                  <img class="ellipse-2" src="https://c.animaapp.com/54PlmdXX/img/ellipse-10.png" />
+                  <div class="delivery-man-image">
+                    <img class="image" src="https://c.animaapp.com/54PlmdXX/img/image-4@2x.png" />
+                  </div>
+                  <div class="text-area">
+                    <div class="blue-box">
+                      <div class="overlap-group-3">
+                        <p class="element"><span class="span">100</span> <span class="text-wrapper-27">%</span></p>
+                        <div class="text-wrapper-28">Delivery Sucess</div>
+                      </div>
+                    </div>
+                    <div class="yellow-box">
+                      <div class="overlap-7">
+                        <div class="yellow-box-2"></div>
+                        <div class="text-wrapper-29">5.0</div>
+                        <div class="text-wrapper-30">(67k)</div>
+                        <div class="text-wrapper-31">Customer review</div>
+                      </div>
+                    </div>
+                    <p class="reliable-on-time">Reliable on time <br />home delivery</p>
+                    <p class="our-in-house">
+                      Our in-house pharmacist ensure your medicines<br />reach you when you need them.
+                    </p>
+                    <div class="overlap-8">
+                      <div class="text-wrapper-32">Search Medicines</div>
+                      <div class="magnifying-glass-wrapper">
+                        <img
+                          class="magnifying-glass"
+                          src="https://c.animaapp.com/54PlmdXX/img/magnifying-glass@2x.png"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <img
+                    class="destination-design"
+                    src="https://c.animaapp.com/54PlmdXX/img/destination-design-pencil.png"
+                  />
+                  <div class="overlap-wrapper">
+                    <div class="overlap-9">
+                      <div class="overlap-10">
+                        <div class="text-wrapper-33">30 minutes</div>
+                        <div class="text-wrapper-34">Delivery within</div>
+                      </div>
+                      <div class="overlap-group-4">
+                        <div class="text-wrapper-35">🕚</div>
+                        <div class="text-wrapper-36">🛵</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-2">
+                <div class="image-section">
+                  <div class="overlap-11">
+                    <div class="overlap-group-5">
+                      <div class="ellipse-3"></div>
+                      <div class="ellipse-4"></div>
+                      <div class="ellipse-5"></div>
+                      <img class="carousel-img" src="https://c.animaapp.com/54PlmdXX/img/carousel1-img.png" />
+                    </div>
+                    <div class="ellipse-6"></div>
+                  </div>
+                </div>
+                <div class="text-area-carousel">
+                  <button class="upload-btn">
+                    <div class="overlap-group-6">
+                      <div class="upload-btn-BG"></div>
+                      <div class="upload-text">Upload</div>
+                      <img
+                        class="arrow-down-iconly"
+                        src="https://c.animaapp.com/54PlmdXX/img/arrow---down---iconly-pro-1@2x.png"
+                      />
+                    </div>
+                  </button>
+                  <p class="carousel1-description">
+                    Got a prescription? We&#39;ve made it easier than ever! Simply upload your <br />prescription, and
+                    our intelligent OCR-based system will automatically identify<br />the medicines you need. Let us
+                    take care of the rest—convenient, accurate, and<br />hassle-free recommendations at your fingertips!
+                  </p>
+                  <div class="overlap-12">
+                    <p class="carousel1-header">
+                      We make healthcare<br />Understandable, Accessible<br />and Affordable.
+                    </p>
+                    <div class="Carousel-1-welcome">WELCOME TO MEDIEASE</div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-3">
+                <div class="image-section">
+                  <div class="overlap-11">
+                    <div class="overlap-group-5">
+                      <div class="ellipse-3"></div>
+                      <div class="ellipse-4"></div>
+                      <div class="ellipse-5"></div>
+                      <img class="carousel-img" src="https://c.animaapp.com/54PlmdXX/img/carousel1-img-1.png" />
+                    </div>
+                    <div class="ellipse-6"></div>
+                  </div>
+                </div>
+                <div class="text-area-carousel">
+                  <button class="div-wrapper">
+                    <div class="overlap-group-7">
+                      <div class="upload-text">Upload</div>
+                      <img
+                        class="arrow-down-iconly"
+                        src="https://c.animaapp.com/54PlmdXX/img/arrow---down---iconly-pro-1@2x.png"
+                      />
+                    </div>
+                  </button>
+                  <p class="carousel1-description">
+                    Got a prescription? We&#39;ve made it easier than ever! Simply upload your <br />prescription, and
+                    our intelligent OCR-based system will automatically identify<br />the medicines you need. Let us
+                    take care of the rest—convenient, accurate, and<br />hassle-free recommendations at your fingertips!
+                  </p>
+                  <div class="overlap-12">
+                    <p class="carousel1-header-2">
+                      We make healthcare<br />Understandable, Accessible<br />and Affordable.
+                    </p>
+                    <div class="Carousel-1-welcome">WELCOME TO MEDIEASE</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="med-animate">
+            <div class="overlap-13">
+              <img class="ellipse-7" src="https://c.animaapp.com/54PlmdXX/img/ellipse-3@2x.png" />
+              <div class="med-bottle">
+                <img class="med-label" src="https://c.animaapp.com/54PlmdXX/img/med-label@2x.png" />
+              </div>
+              <img class="ellipse-8" src="https://c.animaapp.com/54PlmdXX/img/ellipse-1@2x.png" />
+              <img class="ellipse-9" src="https://c.animaapp.com/54PlmdXX/img/ellipse-2@2x.png" />
+            </div>
+          </div>
+          <div class="text-area-2">
+            <div class="shop-now-button">
+              <div class="overlap-group-8">
+                <div class="button-BG"></div>
+                <p class="SHOP-NOW">
+                  <span class="text-wrapper-39">SHOP NOW</span> <span class="text-wrapper-40">&nbsp;</span>
+                </p>
+                <img
+                  class="arrow-down-iconly-2"
+                  src="https://c.animaapp.com/54PlmdXX/img/arrow---down---iconly-pro-2@2x.png"
+                />
+              </div>
+            </div>
+            <div class="Moto-1">Your Health,<br />Our Priority</div>
+            <p class="Moto-2">A Little care goes a long way</p>
+          </div>
+          <div class="navbar">
+            <img class="cart" src="https://c.animaapp.com/54PlmdXX/img/cart@2x.png" />
+            <p class="home"><span class="navbar-Home">Home</span></p>
+            <div class="navbar-Contact">Contact</div>
+            <div class="navbar-AboutUs">About Us</div>
+            <div class="LogoText">MediEase</div>
+          </div>
+          <img class="bottle-shadow" src="https://c.animaapp.com/54PlmdXX/img/bottle-shadow@2x.png" />
+        </div>
+        <img
+        class="chatbot"
+        src="https://c.animaapp.com/54PlmdXX/img/chatbot@2x.png"
+        onclick="openChatbot()" <!-- Add this line for functionality -->
+        style="cursor: pointer;" <!-- Changes the cursor to pointer for better UX -->
+      />
+    </div>
+  </div>
+</div>
 
-# Configure Gemini API
-try:
-    genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
-    model = genai.GenerativeModel('gemini-1.5-pro')
-except:
-    st.error("Please configure GOOGLE_API_KEY in your Streamlit secrets.")
-    st.stop()
-
-# Medical keywords and categories for validation
-MEDICAL_KEYWORDS = {
-    'symptoms': ['pain', 'fever', 'cough', 'headache', 'nausea', 'fatigue', 'dizziness', 'rash'],
-    'body_parts': ['head', 'chest', 'stomach', 'back', 'leg', 'arm', 'throat', 'ear', 'eye'],
-    'conditions': ['diabetes', 'hypertension', 'asthma', 'allergies', 'infection', 'disease', 'syndrome'],
-    'medical_terms': ['diagnosis', 'treatment', 'medication', 'prescription', 'dosage', 'vaccine', 'surgery'],
-    'healthcare': ['doctor', 'hospital', 'clinic', 'emergency', 'medical', 'health', 'medicine'],
-}
-
-def init_session_state():
-    if "chat" not in st.session_state:
-        st.session_state.chat = model.start_chat(history=[])
-    if "conversation_history" not in st.session_state:
-        st.session_state.conversation_history = []
-
-def is_medical_question(text):
-    """
-    Validate if the question is medical-related using keywords and context
-    """
-    text = text.lower()
-    
-    # Check for medical keywords
-    for category in MEDICAL_KEYWORDS.values():
-        if any(keyword in text for keyword in category):
-            return True
-    
-    # Additional validation using medical context patterns
-    medical_patterns = [
-        r'(how|what|when|why|is|are|can|should).*(treat|cure|heal|help|relieve)',
-        r'(symptoms of|signs of|treatment for|medicine for)',
-        r'(medical|health|clinical|doctor|hospital)',
-        r'(side effects|dosage|prescription)',
-        r'(diagnosed with|suffering from|experiencing)',
-    ]
-    
-    return any(re.search(pattern, text) for pattern in medical_patterns)
-
-def validate_and_format_prompt(user_input):
-    """
-    Validate the input and format it for medical context
-    """
-    if not is_medical_question(user_input):
-        return None, "I can only assist with medical and health-related questions. Please ask something related to health, symptoms, treatments, or medical conditions."
-    
-    # Format prompt with medical context
-    formatted_prompt = f"""As a medical information assistant, please address this health-related query:
-
-Question: {user_input}
-
-Please provide information based on these guidelines:
-1. Offer general medical information from reputable sources
-2. Include relevant health precautions and warnings
-3. Recommend professional medical consultation when appropriate
-4. Focus only on well-established medical knowledge
-5. Provide context for medical terms used
-
-Response:"""
-    
-    return formatted_prompt, None
-
-def get_medical_response(prompt):
-    try:
-        formatted_prompt, error = validate_and_format_prompt(prompt)
-        if error:
-            return error
-            
-        response = st.session_state.chat.send_message(formatted_prompt)
-        return response.text
-    except Exception as e:
-        return "I apologize, but I encountered an error processing your medical query. Please try rephrasing your question."
-
-def main():
-    st.set_page_config(
-        page_title="MediChat Assistant",
-        page_icon="🏥",
-        layout="wide"
-    )
-    
-    init_session_state()
-    
-    # Sidebar with information
-    with st.sidebar:
-        st.title("ℹ️ About MediChat")
-        st.markdown("""
-        This medical chatbot provides general health information and guidance. 
-        
-        **Important Notes:**
-        - Strictly for medical and health-related queries only
-        - Not a substitute for professional medical advice
-        - For emergencies, call emergency services immediately
-        - Consult healthcare providers for personal medical advice
-        
-        **Supported Topics:**
-        - General medical information
-        - Symptom guidance
-        - Health conditions
-        - Treatment information
-        - Medication general knowledge
-        - Preventive care
-        - Health education
-        """)
-        
-       
-            
-        # Add medical disclaimer
-        st.markdown("---")
-        st.markdown("""
-        ⚠️ **Medical Disclaimer**
-        
-        This chatbot provides general medical information only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
-        """)
-
-    # Main chat interface
-    st.title("🏥 MediChat Assistant")
-    st.markdown("*Your trusted source for medical information - Ask health-related questions only*")
-    st.markdown("---")
-
-    # Chat interface
-    for message in st.session_state.conversation_history:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
-
-    # User input
-    if user_input := st.chat_input("Type your medical question here..."):
-        # Display user message
-        with st.chat_message("user"):
-            st.markdown(user_input)
-        st.session_state.conversation_history.append({"role": "user", "content": user_input})
-
-        # Show thinking message
-        with st.chat_message("assistant"):
-            with st.spinner("Analyzing your medical query..."):
-                response = get_medical_response(user_input)
-                st.markdown(response)
-                st.session_state.conversation_history.append({"role": "assistant", "content": response})
-
-                # Add medical disclaimer for treatments/medications
-                if any(word in user_input.lower() for word in ['treatment', 'medication', 'medicine', 'drug']):
-                    st.markdown("---")
-                    st.markdown("""
-                    *⚠️ Reminder: This information is for educational purposes only. Always consult a healthcare provider before starting or changing any treatment.*
-                    """)
-
-        # Add timestamp for the conversation
-        st.caption(f"Response generated at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-
-if __name__ == "__main__":
-    main()
+<script>
+  function openChatbot() {
+    window.open("https://saiyangodgoku.pythonanywhere.com", "_blank");
+  }
+</script>
+</body>
+</html>
