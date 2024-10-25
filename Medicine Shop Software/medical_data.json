@@ -137,7 +137,84 @@
                       {"symptom": "varicose veins", "remedies": ["Elevate legs when resting", "Avoid standing for long periods", "Wear compression stockings"]},
                       {"symptom": "vertigo", "remedies": ["Avoid sudden head movements", "Practice balance exercises", "Stay hydrated"]},
                       {"symptom": "warts", "remedies": ["Avoid picking at warts", "Use over-the-counter treatments like salicylic acid", "Cover with a bandage to prevent spreading"]},
-                      {"symptom": "whiplash", "remedies": ["Rest and avoid strenuous activity", "Apply ice to reduce swelling", "Use over-the-counter pain relief if needed"]}
+                      {"symptom": "whiplash", "remedies": ["Rest and avoid strenuous activity", "Apply ice to reduce swelling", "Use over-the-counter pain relief if needed"]},
+                      {
+                        "symptom": "stomach ache",
+                        "remedies": ["Eat smaller, frequent meals", "Avoid spicy and fatty foods", "Drink plenty of water"]
+                      },
+                      {
+                        "symptom": "high blood pressure",
+                        "remedies": ["Reduce sodium intake", "Exercise regularly", "Manage stress through relaxation techniques"]
+                      },
+                      {
+                        "symptom": "heartburn",
+                        "remedies": ["Avoid trigger foods (spicy, acidic)", "Eat smaller meals", "Stay upright after eating"]
+                      },
+                      {
+                        "symptom": "sunburn",
+                        "remedies": ["Apply aloe vera", "Stay out of the sun", "Stay hydrated"]
+                      },
+                      {
+                        "symptom": "numbness",
+                        "remedies": ["Change positions frequently", "Massage the affected area", "Stay warm to improve circulation"]
+                      },
+                      {
+                        "symptom": "frequent urination",
+                        "remedies": ["Reduce fluid intake before bed", "Avoid diuretics like caffeine", "Consult a doctor if persistent"]
+                      },
+                      {
+                        "symptom": "blurred vision",
+                        "remedies": ["Rest your eyes", "Avoid straining your eyes by reducing screen time", "Use artificial tears if necessary"]
+                      },
+                      {
+                        "symptom": "shingles",
+                        "remedies": ["Apply calamine lotion to reduce itching", "Take antiviral medication as prescribed", "Keep the rash clean and dry"]
+                      },
+                      {
+                        "symptom": "irregular heartbeat",
+                        "remedies": ["Practice relaxation techniques", "Avoid caffeine and alcohol", "Consult a healthcare provider"]
+                      },
+                      {
+                        "symptom": "swollen feet",
+                        "remedies": ["Elevate feet while resting", "Reduce salt intake", "Wear comfortable shoes and avoid prolonged standing"]
+                      },
+                      {
+                        "symptom": "tooth sensitivity",
+                        "remedies": ["Use toothpaste for sensitive teeth", "Avoid extreme temperatures in food and drinks", "Consult a dentist if persistent"]
+                      },
+                      {
+                        "symptom": "cracked heels",
+                        "remedies": ["Moisturize regularly", "Soak feet in warm water", "Use a pumice stone to remove dead skin"]
+                      },
+                      {
+                        "symptom": "night sweats",
+                        "remedies": ["Use lightweight, breathable bedding", "Stay hydrated", "Avoid spicy foods and caffeine before bed"]
+                      },
+                      {
+                        "symptom": "shortness of breath",
+                        "remedies": ["Practice deep breathing exercises", "Avoid overexertion", "Consult a healthcare provider if persistent"]
+                      },
+                      {
+                        "symptom": "dry mouth",
+                        "remedies": ["Sip water regularly", "Chew sugar-free gum", "Use over-the-counter saliva substitutes"]
+                      },
+                      {
+                        "symptom": "cold sores",
+                        "remedies": ["Apply antiviral cream", "Avoid touching the sore", "Use lip balm with SPF to prevent outbreaks"]
+                      },
+                      {
+                        "symptom": "hives",
+                        "remedies": ["Take an antihistamine", "Avoid hot showers", "Wear loose, breathable clothing"]
+                      },
+                      {
+                        "symptom": "bruising",
+                        "remedies": ["Apply ice to reduce swelling", "Keep the affected area elevated", "Use a compression bandage if needed"]
+                      },
+                      {
+                        "symptom": "dandruff",
+                        "remedies": ["Use anti-dandruff shampoo", "Avoid harsh hair products", "Massage scalp regularly to stimulate circulation"]
+                      }
+                      
                   ]
               }
           }

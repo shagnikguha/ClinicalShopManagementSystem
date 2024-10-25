@@ -41,7 +41,7 @@
                       <a href="#footer" class="text-wrapper-3">About Us</a>
                     </div>
                   </div>
-                  <img class="cart" src="https://c.animaapp.com/oFGvNr78/img/cart@2x.png" />
+                  <a href="/cart"><img class="cart" src="https://c.animaapp.com/oFGvNr78/img/cart@2x.png" /></a>
                 </div>
               </div>
               <div class="background-content">
@@ -106,11 +106,11 @@
                 <p class="reliable-on-time">Reliable on time <br />home delivery</p>
                 <p class="our-in-house">Our in-house pharmacist ensure your medicines<br />reach you when you need them.</p>
               </div>
-              <a href="/search">
+              <a href="/search" class="search-link">
                 <div class="search-bar">
-                <div class="text-wrapper">Search Medicines</div>
-                <img class="search-btn" src="https://c.animaapp.com/XnFwv7EN/img/search-btn@2x.png" />
-              </div>
+                  <div class="text-wrapper">Search Medicines</div>
+                  <img class="search-btn" src="https://c.animaapp.com/XnFwv7EN/img/search-btn@2x.png" />
+                </div>
               </a>
               <div class="blue-yellow-box">
                 <div class="blue-box">
@@ -159,21 +159,23 @@
             <div class="trending-products-2">Trending products<br />for you!</div>
           </div>
           <div class="see-all-product-btn">
-            <div class="text-wrapper-19">SEE ALL PRODUCTS</div>
+            <a href="/search"><div class="text-wrapper-19">SEE ALL PRODUCTS</div></a>
             <img class="arrow" src="https://c.animaapp.com/oFGvNr78/img/arrow@2x.png" />
           </div>
         </div>
         <div class="products-container">
+          <% if (locals.top &&locals.top.length) { %>
+            <% for(var i=0;i<locals.top.length;i++){ %>  
           <a href="/search">
             <div class="card">
             <div class="card-img">
-              <img class="allegra-image" src="https://c.animaapp.com/oFGvNr78/img/allegra-image-1@2x.png" />
+              <img class="allegra-image" src="/images/<%=top[i].name%>.jpg" />
             </div>
             <div class="card-desc">
               <div class="med-txt">
-                <div class="med-name"><div class="text-wrapper-20">Allegra- 180mg</div></div>
+                <div class="med-name"><div class="text-wrapper-20"><%= top[i].name %></div></div>
                 <div class="med-info">
-                  <p class="p">For fast relief from sneezing, runny nose, and itchy eyes caused by allergies.</p>
+                  <p class="p"><%= top[i].description %></p>
                 </div>
               </div>
               <div class="bottom-line-div">
@@ -181,52 +183,13 @@
                   <img class="plus-sign" src="https://c.animaapp.com/oFGvNr78/img/plus-sign@2x.png" />
                   <div class="text-wrapper-21">Add to cart</div>
                 </div>
-                <div class="text-wrapper-22">₹ 160/-</div>
+                <div class="text-wrapper-22">₹ <%=top[i].price %>/-</div>
               </div>
             </div>
           </div>
           </a>
-          
-          <div class="card">
-            <div class="card-img">
-              <img class="allegra-image" src="https://c.animaapp.com/oFGvNr78/img/allegra-image-1-1@2x.png" />
-            </div>
-            <div class="card-desc">
-              <div class="med-txt">
-                <div class="med-name"><div class="text-wrapper-20">Allegra- 180mg</div></div>
-                <div class="med-info">
-                  <p class="p">For fast relief from sneezing, runny nose, and itchy eyes caused by allergies.</p>
-                </div>
-              </div>
-              <div class="bottom-line-div">
-                <div class="add-to-cart-btn">
-                  <img class="plus-sign" src="https://c.animaapp.com/oFGvNr78/img/plus-sign-1@2x.png" />
-                  <div class="text-wrapper-21">Add to cart</div>
-                </div>
-                <div class="text-wrapper-22">₹ 160/-</div>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-img">
-              <img class="allegra-image" src="https://c.animaapp.com/oFGvNr78/img/allegra-image-1-2@2x.png" />
-            </div>
-            <div class="card-desc">
-              <div class="med-txt">
-                <div class="med-name"><div class="text-wrapper-20">Allegra- 180mg</div></div>
-                <div class="med-info">
-                  <p class="p">For fast relief from sneezing, runny nose, and itchy eyes caused by allergies.</p>
-                </div>
-              </div>
-              <div class="bottom-line-div">
-                <div class="add-to-cart-btn">
-                  <img class="plus-sign" src="https://c.animaapp.com/oFGvNr78/img/plus-sign-2@2x.png" />
-                  <div class="text-wrapper-21">Add to cart</div>
-                </div>
-                <div class="text-wrapper-22">₹ 160/-</div>
-              </div>
-            </div>
-          </div>
+          <% } %>
+          <% } %>
         </div>
       </div>
       <div class="ICONS">
@@ -288,7 +251,7 @@
               <div class="text-wrapper-33">Quick Links</div>
               <a href="/"><div class="text-wrapper-34">Home</div></a>
               <a href="/ocr"><div class="text-wrapper-35">Prescription Upload</div></a>
-              <a href="https://csm-chatbot.streamlit.app/"><div class="text-wrapper-35">Chatbot</div></a>
+              <a href="https://finalmedicalshop-2024.streamlit.app/"><div class="text-wrapper-35">Chatbot</div></a>
             </div>
             <div class="follow-us">
               <div class="text-wrapper-33">Follow us</div>
@@ -317,7 +280,7 @@
           </div>
         </div>
       </div>
-      <a href="https://csm-chatbot.streamlit.app/">
+      <a href="https://finalmedicalshop-2024.streamlit.app/">
         <div class="chatbot-btn">
           <div class="ellipse-6"></div>
           <img class="vector" src="https://c.animaapp.com/oFGvNr78/img/vector@2x.png" />

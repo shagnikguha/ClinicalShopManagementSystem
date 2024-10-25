@@ -188,7 +188,7 @@
   font-weight: 800;
   color: #ffffff;
   font-size: 24px;
-  text-align: center;
+  text-align: left;
   letter-spacing: 5.28px;
   line-height: 24.5px;
 }
@@ -1732,4 +1732,7 @@
   letter-spacing: 0.20px;
   line-height: 60px;
   white-space: nowrap;
+}
+.search-link{
+  z-index: 100;
 }

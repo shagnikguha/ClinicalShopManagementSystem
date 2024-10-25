@@ -31,7 +31,18 @@ const medicneSchema= new mongoose.Schema({
     expiryDate:{
         type: String,
         required: true,
-    }
+    },
+
+    frequency:{
+      type:Number,
+      required:0,
+    },
+
+    description:{
+      type:String,
+      required: true,
+    },
+
 })
 
 const Medicine= mongoose.model('Medicine',medicneSchema);
