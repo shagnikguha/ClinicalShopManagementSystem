@@ -11,8 +11,8 @@ async function createTransporter() {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-            user: "chloe.reinger@ethereal.email", // generated ethereal user
-            pass: "	ZrtCWCyrPEwe4HYeT6", // generated ethereal password
+            user: "tania.spinka@ethereal.email", // generated ethereal user
+            pass: "	ghWV3K99eHMUmRYmXq", // generated ethereal password
         },
     });
     
