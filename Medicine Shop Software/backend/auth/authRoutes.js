@@ -66,9 +66,11 @@ router.get('/auth/google/secrets',passport.authenticate("google",{
     failureRedirect: '/login',
 }));
 
-router.get('/auth/logout', (req, res) => {
-    req.logout();
-    res.redirect('/login');
-});
+router.post('/logout', function(req, res, next){
+    req.logout(function(err) {
+      if (err) { return res.json({err:err}) }
+      res.redirect('/');
+    });
+  });
 
 export default router;

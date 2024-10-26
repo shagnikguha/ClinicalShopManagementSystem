@@ -59,6 +59,32 @@ searchRouter.get('/search/:category', Authenticated, async (req, res) => {
    }
 });
 
+searchRouter.post('/search',Authenticated,async(req,res)=>{
+   const {medicine}= req.body;
+   try{
+   const mymed= await Medicine.find({name:medicine});
+   let item_no = 0;
+   let amount = 0;
 
+      const cart = await Cart.findOne({ userId: req.user._id, paid: false }).populate('items.medicineId');
+      
+      if (cart && cart.items && cart.items.length > 0) {
+        item_no = cart.items.length;
+        amount = cart.items.reduce((total, item) => total + (item.medicineId.price * item.quantity), 0);
+      }
+
+      if (mymed) {
+         res.render('search', { medicines: mymed, items: item_no, price: amount });
+      } else {
+         res.render('search', { medicines: null, items: 0, price: 0, err: 'No such Medicine found!' });
+         console.log('Some error occurred!');
+      }
+   }
+   catch (err) {
+      console.error(err);
+      return res.render('search', { medicines: null, items: 0, price: 0, err: 'Error while loading medicines!' });
+   }
+
+});
 
 export default searchRouter;

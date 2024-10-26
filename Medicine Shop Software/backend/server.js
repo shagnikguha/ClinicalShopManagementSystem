@@ -14,6 +14,7 @@ import passport from "passport";
 import LocalStrategy from "passport-local";
 import GoogleStrategy from 'passport-google-oauth20';
 import bcrypt from "bcrypt";
+import Medicine from "./models/medicineModel.js";
 import User from "./models/customerModel.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -67,8 +68,10 @@ app.use(PaymentRouter);
 
 
 // Root Route
-app.get('/', (req, res) => {
-    res.render('home');
+app.get('/', async(req, res) => {
+    const medicines= await Medicine.find({}).sort({frequency:-1});
+    const finalMedicines= medicines.slice(0,3);
+    res.render('home',{top:finalMedicines});
 });
 
 // Passport Local Strategy

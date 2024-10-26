@@ -136,6 +136,7 @@ PaymentRouter.post('/payment-status/:transactionId', async (req, res) => {
             } else {
                 medicine.stockQuantity = 0;
             }
+            medicine.frequency+=1;
             await medicine.save();
         }
     }
@@ -153,7 +154,7 @@ PaymentRouter.post('/payment-status/:transactionId', async (req, res) => {
                          <ul>
                          ${cart.items.map(item => `<li>${item.medicineId.name} - Quantity: ${item.quantity}</li>`)}
                           </ul>
-                         <p>Total Amount: ₹${(amount / 100).toFixed(2)}</p>`;
+                         <p>Total Amount: ₹${(amount).toFixed(2)}</p>`;
 
     //building the metadata for email
     const mailOptions = {
@@ -166,6 +167,7 @@ PaymentRouter.post('/payment-status/:transactionId', async (req, res) => {
     try {
        const info= await transporter.sendMail(mailOptions);
         console.log('Email sent successfully');
+        console.log('Preview URL:', nodemailer.getTestMessageUrl(info));
     } catch (error) {
         console.error('Error sending email:', error);
     }

@@ -933,3 +933,18 @@
     letter-spacing: 0;
     line-height: normal;
   }
+
+  .btn-logout {
+    background-color: #ff4b4b; /* red color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
+  .btn-logout:hover {
+    background-color: #ff1c1c; /* darker red on hover */
+  }
+  

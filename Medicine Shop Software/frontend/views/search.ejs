@@ -12,13 +12,17 @@
           <div class="navbar-clickables">
             <a href="#products"><div class="div-wrapper"><div class="div">Products</div></div></a>
             <a href="#footer"><div class="div-wrapper"><div class="div">About Us</div></div></a>
-            <div class="div-wrapper"><div class="div">Logout</div></div>
+            <form action="/logout" method="post">
+              <div class="div-wrapper">
+                <button type="submit" class="btn-logout">Logout</button>
+              </div>
+            </form> 
           </div>
           <a href="/"><div class="logo"><div class="text-wrapper-2">MediEase</div></div></a>
         </div>
         <div class="background-img"><img class="image" src="https://c.animaapp.com/1TLSPjG7/img/image-11.png" /></div>
-        <form method="POST" class="search-bar">
-          <input type="text" class="p" placeholder="Search your products from here"></input>
+        <form method="POST" class="search-bar" action="/search">
+          <input type="text" class="p" placeholder="Search your products from here" name="medicine"></input>
           <button class="search-btn" type="submit">
             <img class="vector" src="https://c.animaapp.com/1TLSPjG7/img/vector@2x.png" />
             <div class="text-wrapper-3">Search</div>
@@ -85,6 +89,8 @@
             </form>
           </div>
           <% } %>
+          <% }else { %>
+          <p>No Medicine found!</p>
           <% } %>
         </div>
       </div>
