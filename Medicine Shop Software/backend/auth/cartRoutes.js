@@ -25,25 +25,42 @@ const Authenticated = (req, res, next) => {
 // GET /cart: Display user's cart
 cartrouter.get('/cart', Authenticated, async (req, res) => {
     try {
-        let amount=0;
+        let amount = 0;
         let currentCart = await Cart.findOne({ userId: req.user._id, paid: false }).populate('items.medicineId');
-
         let previousCart = await prevCart.findOne({ userId: req.user._id, paid: true }).sort({ updatedAt: -1 }).populate('items.medicineId');
 
-        // If there is no unpaid cart, return an empty cart or a message
-        if (!currentCart) {
-            return res.render('cart', { present: null, past: previousCart,price:0, error: 'Your cart is empty' });
-        }
-         
-        if(currentCart && currentCart.items)
-         amount = currentCart.items.reduce((total, item) => total + (item.medicineId.price * item.quantity), 0); //amount calculation
+        // Check if there's a paid cart but no current cart
+        let paidCart = await Cart.findOne({ userId: req.user._id, paid: true });
+        if (paidCart && !currentCart) {
+            // Move paid cart to prevCart
+            const paidCartObject = paidCart.toObject();
+            delete paidCartObject._id; // Remove the _id field
 
-        // Render the cart view with both current (unpaid) and previous (most recent paid) cart
-        res.render('cart', {present: currentCart,past: previousCart,price:amount});
-        
+            previousCart = await prevCart.findOneAndUpdate(
+                { userId: req.user._id, paid: true },
+                { $set: paidCartObject },
+                { upsert: true, new: true }
+            ).populate('items.medicineId');
+
+            await Cart.deleteOne({ _id: paidCart._id });
+
+            // Create a new empty unpaid cart
+            currentCart = new Cart({
+                userId: req.user._id,
+                items: [],
+                paid: false,
+            });
+            await currentCart.save();
+        }
+
+        if (currentCart && currentCart.items) {
+            amount = currentCart.items.reduce((total, item) => total + (item.medicineId.price * item.quantity), 0);
+        }
+
+        res.render('cart', { present: currentCart, past: previousCart, price: amount });
     } catch (err) {
         console.error('Error fetching cart:', err);
-        return res.status(500).render('cart', { present: null, past: previousCart,price:0, error: 'Error retrieving cart' });
+        return res.status(500).render('cart', { present: null, past: null, price: 0, error: 'Error retrieving cart' });
     }
 });
 

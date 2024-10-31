@@ -55,6 +55,7 @@
           <% for(var i=0;i<locals.past.items.length;i++) { %>
         <div class="card-2">
           <div class="quantity"><div class="text-wrapper-2"><%=past.items[i].quantity%></div></div>
+          <% if (past.items[i].medicineId && past.items[i].medicineId.name && past.items[i].medicineId.price && past.items[i].quantity ){ %>
           <div class="img-container">
             <img class="med-img" src="/images/<%=past.items[i].medicineId.name%>.jpg" />
           </div>
@@ -64,6 +65,7 @@
           </div>
           <div class="total-price">₹ <%= past.items[i].quantity * past.items[i].medicineId.price %></div>
         </div>
+        <% } %>
         <% } %>
         <% } %>
       </div>
