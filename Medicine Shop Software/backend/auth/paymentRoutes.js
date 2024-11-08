@@ -115,6 +115,7 @@ PaymentRouter.get('/payment', Authenticated, async (req, res) => {
 
 PaymentRouter.post('/payment-status/:transactionId', async (req, res) => {
     // Handle the redirect from PhonePe
+    let id= req.params.transactionId;
     console.log('Redirect received:', req.params.transactionId);
     // Process the payment status
     const cart = await Cart.findOne({ userId: userid, paid: false }).populate('items.medicineId');
@@ -150,6 +151,7 @@ PaymentRouter.post('/payment-status/:transactionId', async (req, res) => {
 
     const mailContents = `<h1> Payment Successfull </h1>
                          <p>Thank you for choosing us <p>
+                         <p>Transction id: ${id}
                          <h2>Cart Contents:</h2>
                          <ul>
                          ${cart.items.map(item => `<li>${item.medicineId.name} - Quantity: ${item.quantity}</li>`)}
@@ -172,7 +174,7 @@ PaymentRouter.post('/payment-status/:transactionId', async (req, res) => {
         console.error('Error sending email:', error);
     }
 
-    res.render('home', { status: 'Success' });
+    res.redirect('/');
 });
 
 PaymentRouter.post('/payment-callback', async (req, res) => {

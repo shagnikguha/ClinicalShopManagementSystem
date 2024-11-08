@@ -35,7 +35,7 @@ const medicneSchema= new mongoose.Schema({
 
     frequency:{
       type:Number,
-      required:0,
+      required:true,
     },
 
     description:{

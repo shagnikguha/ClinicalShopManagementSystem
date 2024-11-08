@@ -86,7 +86,7 @@
                 .then(response => response.json())
                 .then(cartResponse => {
                     console.log('Cart updated:', cartResponse);
-                    resultDiv.textContent = `Medicines added to cart: ${cartResponse.medicines.join(', ')}`;  // Display success message
+                    resultDiv.textContent = `Medicines added to cart`  // Display success message
                 })
                 .catch(err => {
                     console.error('Error updating cart:', err);
